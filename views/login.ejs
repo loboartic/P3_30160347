@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <!-- <link rel="stylesheet" href="css/index.css"> -->
+  <script src="js/tailwind.js"></script>
+</head>
+<body class="">
+  <!-- Contenido principal -->
+  <section class="h-screen w-screen flex justify-center items-center">
+  	<div class=" border rounded-md mx-auto shadow-md w-2/4">
+
+      <!-- Formulario -->
+    	<form class="bg-gray-50 flex flex-col p-10 justify-center items-center" method="POST" action="/">
+
+        <h1 class="text-xl font-bold">Iniciar Sesión</h1>
+
+        <label class="self-start mb-0">Correo</label>
+  			<input type="text" name="mail" placeholder="Correo" class="appearance-none p-3 bg-gray-200 text-gray-700 rounded-md border w-full focus:ring-4 leading-tight focus:outline-none focus:shadow-outline">
+
+        <label class="self-start mt-4 mb-0">Contraseña</label>
+  			<input type="password" name="password" placeholder="Contraseña" class="appearance-none p-3 bg-gray-200 text-gray-700 rounded-md border w-full focus:ring-4 leading-tight focus:outline-none focus:shadow-outline">
+  		  
+        <button id="btnLogin" class="bg-lime-500 border rounded-md w-100 text-white w-full p-3 my-4 focus:ring-4 hover:bg-lime-600 ">Iniciar Sesión</button>
+        <div id='boxMsg'></div>
+      
+      </form>
+
+  	</div>
+  </section>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
