@@ -6,11 +6,12 @@ const highlights = document.querySelector("#highlightLink");
 const btnCreateProduct = document.querySelector("#btnCreateProduct");
 const exitButton = document.querySelector("#exitButton");
 
-console.log(categorys)
-console.log(highlights)
-
+// ===== EVENTO =====
 btnCreateProduct.addEventListener('click', openModal);
 exitButton.addEventListener('click', closeModal);
+
+
+// ===== FUNCIONES =====
 
 // Función para crear el producto
 function openModal(event) {
