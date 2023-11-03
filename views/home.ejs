@@ -8,28 +8,52 @@
 </head>
 <body>
   
-  <section class="container-full bg-orange-600 shadow-md p-6 grid grid-cols-6 text-center justify-items-center place-items-center">
+  <header class="w-full bg-orange-600 shadow-md h-16 sm:flex-row flex justify-center items-center justify-evenly">
     
-    <button class="col-span-2 bg-gray-300 rounded-full p-3">
+  <div>
+    <button class="col-span-2 bg-gray-300 rounded-full p-1">
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
       <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
       </svg>
     </button>
-    <a href="#" class="text-white shrink-0 font-bold underline">Categorias</a>
-    <a href="#" class="text-white shrink-0 font-bold underline">Destacados</a>
-    <button class="col-span-2 bg-orange-300 rounded-lg p-3">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  </div>
+
+   <nav class=" flex justify-evenly w-1/6 items-center justify-center ">
+    <a href="#" class="text-white  font-semibold " id="categorysLink">Categorias</a>
+    <a href="#" class="text-white  font-semibold " id="highlightLink">Destacados</a>
+   
+   
+    <div class="relative m-4">
+      <div class="absolute pointer-events-none pt-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class=" absolute icon icon-tabler icon-tabler-search" width="44" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+          <path d="M21 21l-6 -6" />
+        </svg>
+      </div>
+      <input type="text" placeholder="Search" class="pl-10 bg-gray-200 border rounded-lg p-3 outline-none hover:ring-2">
+    </div>
+  </nav>
+
+   <div>
+    <button class="col-span-2 bg-orange- rounded-lg p-1 my-1">
+      <!-- Icono de salida -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="30" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fafafa" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
         <path d="M9 12h12l-3 -3" />
         <path d="M18 15l3 -3" />
       </svg>
     </button>
+   </div>
   
-  </section>
-  <input type="text" name="searchbar" class="m-3 appearance-none p-3 bg-orange-500 text-gray-700 rounded-md border focus:ring-4 leading-tight focus:outline-none focus:shadow-outline">
+  </header>
+
+  <!-- Boton momentaneo -->
+  <button id="btnCreateProduct" class="bg-green-500 border rounded-md p-2 m-4 text-white">Crear Producto</button>
+  
   <section class="container h-[100vh] w-[100vw] p-3">
     <!-- Modelo Tarjeta -->  
     <div class="border rounded-md bg-gray-200 shadow-xl h-[240px] w-[200px] grid grid-rows-6 hover:-translate-y-3 transition ease-in delay-150">
@@ -39,6 +63,7 @@
           <p>Info</p>
         </div>
         <div class="grid place-items-center">
+          <!-- Icono de camara -->
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-off" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M15 8h.01" />
@@ -50,8 +75,32 @@
         </div>
       </div>
     </div>
-  
   </section>
 
+
+  <!-- Modal para agregar productos -->
+  <div id="modal" class="fixed inset-0 bg-backdrop backdrop-filter backdrop-blur-sm z-50 flex items-center justify-center px-6 hidden">
+    <div class="h-auto overflow-hidden rounded-md shadow-2xl w-full max-w-3xl border">
+        <div class="bg-orange-100 grid grid-cols-12">
+          <p class="col-span-11"> Header </p>
+          <span id="exitButton" class="justify-end">
+            <svg xmlns="http://www.w3.org/2000/svg" class="pr-0 icon icon-tabler icon-tabler-xbox-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 21a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9a9 9 0 0 0 -9 9a9 9 0 0 0 9 9z" />
+            <path d="M9 8l6 8" />
+            <path d="M15 8l-6 8" />
+          </svg></span>
+        </div>
+        <div>
+          Modal Content
+        </div>
+        <div>
+          Modal Footer
+        </div>
+
+    </div>
+
+  </div>
+  <script src="js/home.js"></script>
 </body>
 </html>

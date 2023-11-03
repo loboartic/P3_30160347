@@ -16,13 +16,32 @@
 
         <h1 class="text-xl font-bold">Iniciar Sesión</h1>
 
-        <label class="self-start mb-0">Correo</label>
-  			<input type="text" name="mail" placeholder="Correo" class="appearance-none p-3 bg-gray-200 text-gray-700 rounded-md border w-full focus:ring-4 leading-tight focus:outline-none focus:shadow-outline">
+        
+        <!-- <label class="self-start mb-0">Correo</label> -->
+        <div class="relative w-full m-4">
+          <div class="absolute p-3 pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-mail" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
+              <path d="M3 7l9 6l9 -6"></path>
+            </svg>
+          </div>
+          <input type="text" name="mail" placeholder="Correo" class="appearance-none bg-gray-200 pl-14 p-4 text-gray-700 rounded-md border w-full focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        
+        <div class="relative w-full m-4">
+          <div class="absolute p-3 pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-lock" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
+              <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
+              <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
+            </svg>
+          </div>
+          <input type="text" name="mail" placeholder="Contaseña" class="appearance-none bg-gray-200 pl-14 p-4 text-gray-700 rounded-md border w-full focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
 
-        <label class="self-start mt-4 mb-0">Contraseña</label>
-  			<input type="password" name="password" placeholder="Contraseña" class="appearance-none p-3 bg-gray-200 text-gray-700 rounded-md border w-full focus:ring-4 leading-tight focus:outline-none focus:shadow-outline">
-  		  
-        <button id="btnLogin" class="bg-lime-500 border rounded-md w-100 text-white w-full p-3 my-4 focus:ring-4 hover:bg-lime-600 ">Iniciar Sesión</button>
+        <button id="btnLogin" class="bg-lime-500 border rounded-md w-100 text-white w-full p-3 my-4 focus:ring-2 hover:bg-lime-600 ">Iniciar Sesión</button>
         <div id='boxMsg'></div>
       
       </form>
