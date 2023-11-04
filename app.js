@@ -1,7 +1,8 @@
 // ===== IMPORTACIONES =====
 const express = require('express');
 const path = require('path');
-const login = require('./routes/login.js')
+const login = require('./routes/login.js');
+const morgan = require('morgan');
 
 // ===== RUTAS =====
 
@@ -15,7 +16,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/login', login);
-
+app.use(morgan('tiny'));  
 
 // ==== RUTAS ====
 app.get('/', (req, res) => {

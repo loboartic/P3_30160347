@@ -5,11 +5,14 @@ const categorys = document.querySelector("#categorysLink");
 const highlights = document.querySelector("#highlightLink");
 const btnCreateProduct = document.querySelector("#btnCreateProduct");
 const exitButton = document.querySelector("#exitButton");
+const label = document.querySelector('#inputLabel');
+const input = document.querySelector('#inputFile');
 
-// ===== EVENTO =====
+
+// ===== EVENTOS =====
 btnCreateProduct.addEventListener('click', openModal);
 exitButton.addEventListener('click', closeModal);
-
+label.addEventListener('click', fileHandler);
 
 // ===== FUNCIONES =====
 
@@ -28,6 +31,9 @@ function closeModal(event) {
     modal.classList.add('hidden')
 }
 
+function fileHandler(event) {
+    input.click();
+}
 
 // Función que crea las tarjetas de los productos en el contenedor de productos
 function createProductTemplate( data ) {
