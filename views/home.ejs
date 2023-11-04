@@ -20,8 +20,9 @@
     </div>
 
     <nav class="flex justify-evenly w-1/6 items-center justify-center ">
-      <a href="#" class="text-white  font-semibold " id="categorysLink">Categorias</a>
-      <a href="#" class="text-white  font-semibold " id="highlightLink">Destacados</a>
+
+      <a href="#" class="text-white font-semibold" id="categorys">Categorias</a>
+      <a href="#" class="text-white font-semibold" id="highlightLink">Destacados</a>
 
 
       <div class="relative m-4">
@@ -49,11 +50,8 @@
      </div>
   </header>
 
-  <!-- Boton momentaneo -->
-  <button id="btnCreateProduct" class="bg-neutral-100 border rounded-md p-2 m-4 hover:text-white hover:bg-neutral-500">Crear Producto</button>
-   
-
-  <section class="container h-[100vh] w-[100vw] p-3">
+  <section id="Productos" class="container h-[100vh] w-[100vw] p-3" data-origin="productos">
+    <button id="btnCreateProduct" class="bg-neutral-100 border rounded-md p-2 m-4 hover:text-white hover:bg-neutral-500">Crear Producto</button>
     <!-- Modelo Tarjeta -->  
     <div class="border rounded-md bg-blue-500 shadow-xl h-[240px] w-[200px] grid grid-rows-6 hover:-translate-y-3 transition ease-in delay-150">
       <div class="bg-gray-800 row-span-4 rounded-t-lg">
@@ -76,93 +74,123 @@
     </div>
   </section>
 
+  <section id="Categorias" class="container h-[100vh] w-[100vw] p-3 flex hidden" data-origin="categorias">
+    <button id="btnCategoris" class="bg-neutral-100 border rounded-md p-2 m-4 hover:text-white hover:bg-neutral-500">Crear Categoria</button>
+  </section>
 
   <!-- Modal para agregar productos -->
   <div id="modal" class="fixed inset-0 bg-backdrop backdrop-filter backdrop-blur-sm z-50 flex items-center justify-center px-6 bg-slate-950/50 hidden ">
-    <div class="h-auto overflow-hidden rounded-md shadow-2xl w-full max-w-3xl border">
-        <div class="bg-gray-100 grid grid-cols-12">
-          <p class="col-span-11 font-semibold m-4"> Crear Producto </p>
-          <span id="exitButton" class="justify-end">
-            <svg xmlns="http://www.w3.org/2000/svg" class="pr-0 icon icon-tabler icon-tabler-xbox-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M12 21a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9a9 9 0 0 0 -9 9a9 9 0 0 0 9 9z" />
-            <path d="M9 8l6 8" />
-            <path d="M15 8l-6 8" />
-          </svg></span>
-        </div>
-        <div class="bg-gray-100">
-          <!-- Modal Content -->
-          <form class="grid grid-cols-6 gap-1">
-
-            <div class="border-2 border-dashed rounded-md m-4 p-4 col-span-6 h-60 flex flex flex-col justify-center items-center hover:bg-gray-600 transition ease-out delay-100">
-              <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                  <path d="M7 9l5 -5l5 5" />
-                  <path d="M12 4l0 12" />
-                </svg>
+    <!-- Modal -->
+    <div class="h-auto overflow-hidden rounded-md shadow-2xl w-full max-w-3xl border hidden"> 
+        <!-- MOdal header -->
+      <div class=" grid grid-cols-12">
+        <p class="col-span-11 font-semibold m-4"> Crear Producto </p>
+        <span class="exitButton justify-end">
+          <svg xmlns="http://www.w3.org/2000/svg" class="pr-0 icon icon-tabler icon-tabler-xbox-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M12 21a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9a9 9 0 0 0 -9 9a9 9 0 0 0 9 9z" />
+          <path d="M9 8l6 8" />
+          <path d="M15 8l-6 8" />
+        </svg></span>
+      </div>
+      <div class="">
+    
+        <!-- modal content -->
+        <!-- productos -->
+        <div id="ModalProductos" data-modal="productos" class="hidden">
+          <div class="bg-gray-100">
+            <!-- Modal Content -->
+            <form class="grid grid-cols-6 gap-1">
+              <!-- Contenedor -->
+              <div id="dropArea" class="border-2 border-dashed rounded-md m-4 p-4 col-span-6 h-60 flex flex-col justify-center items-center hover:bg-gray-600 transition ease-out delay-100">
+                <!-- Sin nada -->
+                <div class="flex flex-col justify-center items-center">
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                      <path d="M7 9l5 -5l5 5" />
+                      <path d="M12 4l0 12" />
+                    </svg>
+                  </div>
+                  <label>Arrastrar aquí su archivos</label>
+                  <p>o</p>
+                  <label id="inputLabel" class="bg-blue-300 border rounded-md p-4 hover:bg-blue-500 transition ease-out delay-100">Seleccione sus archivos manualmente</label>
+                  <input id="inputFile" type="file" class="hidden">
+                </div>
+  
+                <div id="upload" class="flex flex-col justify-center items-center hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-upload" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
+                    <path d="M9 15l3 -3l3 3" />
+                    <path d="M12 12l0 9" />
+                  </svg>
+                </div>
               </div>
-              <label>Arrastrar aquí su archivos</label>
-              <p>o</p>
-              <label id="inputLabel" class="bg-blue-300 border rounded-md p-4 hover:bg-blue-500 transition ease-out delay-100">Seleccione sus archivos manualmente</label>
-              <input id="inputFile" type="file" class="hidden">
-            </div>
-            
-            <div class="relative m-4 col-span-3">
-              <div class="absolute p-3 pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-box-seam" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9l8 -4.5" />
-                  <path d="M12 12l8 -4.5" />
-                  <path d="M8.2 9.8l7.6 -4.6" />
-                  <path d="M12 12v9" />
-                  <path d="M12 12l-8 -4.5" />
-                </svg>
+  
+              <div id="boxImgs" class="bg-gray-500 border rounded col-span-6 mt-0 ml-4 mr-4 p-2 flex flex-row wrap gap-2 hidden">
+  
               </div>
-              <input type="text" name="mail" placeholder="Nombre del producto" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-
-
-            <div class="relative m-4 col-span-3">
-              <div class="absolute p-3 pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-coin" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                  <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
-                  <path d="M12 7v10" />
-                </svg>
-              </div>
-              <input type="text" name="mail" placeholder="Precio Unitario" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-
               <div class="relative m-4 col-span-3">
-              <div class="absolute p-3 pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-coin" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                  <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
-                  <path d="M12 7v10" />
-                </svg>
+                <div class="absolute p-3 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-box-seam" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9l8 -4.5" />
+                    <path d="M12 12l8 -4.5" />
+                    <path d="M8.2 9.8l7.6 -4.6" />
+                    <path d="M12 12v9" />
+                    <path d="M12 12l-8 -4.5" />
+                  </svg>
+                </div>
+                <input type="text" name="mail" placeholder="Nombre del producto" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
               </div>
-              <input type="text" name="mail" placeholder="Codigo" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
+  
+  
+              <div class="relative m-4 col-span-3">
+                <div class="absolute p-3 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-coin" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                    <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
+                    <path d="M12 7v10" />
+                  </svg>
+                </div>
+                <input type="text" name="mail" placeholder="Precio Unitario" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+              </div>
+  
+                <div class="relative m-4 col-span-3">
+                <div class="absolute p-3 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-coin" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                    <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
+                    <path d="M12 7v10" />
+                  </svg>
+                </div>
+                <input type="text" name="mail" placeholder="Codigo" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+              </div>
+  
+              <div class=" m-4 col-span-3">
+                <select class="bg-gray-100 p-4 border w-full">
+                  <option value="0">Seleccione una opcion...</option>
+                </select>
+              </div>
+            </form>
+  
+          </div>
 
-            <div class=" m-4 col-span-3">
-              <select class="bg-gray-100 p-4 border w-full">
-                <option value="0">Seleccione una opcion</option>
-              </select>
-            </div>
-          </form>
+
 
         </div>
-        <div>
-          <!-- Modal Footer -->
+        <!-- categorias -->
+        <div id="ModalCategorys" data-modal="categorias" class="hidden">
+          <p></p>
         </div>
-
+      </div>
     </div>
-
-  </div>
+  </div>  
+  
   <script src="js/home.js"></script>
 </body>
 </html>
