@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Inicio</title>
-  <script src="js/tailwind.js"></script>
+  <link rel="stylesheet" href="css/tailwind.css">
 </head>
 <body>
   
@@ -79,9 +79,9 @@
   </section>
 
   <!-- Modal para agregar productos -->
-  <div id="modal" class="fixed inset-0 bg-backdrop backdrop-filter backdrop-blur-sm z-50 flex items-center justify-center px-6 bg-slate-950/50 hidden ">
+  <div id="modal" class="fixed inset-0 overflow-y-auto overflow-y-scroll bg-backdrop backdrop-filter backdrop-blur-sm z-50 flex items-center justify-center px-6 bg-slate-950/50 hidden ">
     <!-- Modal -->
-    <div class="h-auto overflow-hidden rounded-md shadow-2xl w-full max-w-3xl border bg-gray-100"> 
+    <div class="h-auto overflow-y-auto overflow-y-scroll rounded-md shadow-2xl w-full max-w-3xl border bg-gray-100"> 
         <!-- MOdal header -->
       <div class=" grid grid-cols-12">
         <p class="col-span-11 font-semibold m-4"> Crear Producto </p>
@@ -102,9 +102,9 @@
             <!-- Modal Content -->
             <form class="grid grid-cols-6 gap-1">
               <!-- Contenedor -->
-              <div id="dropArea" class="border-2 border-dashed rounded-md m-4 p-4 col-span-6 h-60 flex flex-col justify-center items-center hover:bg-gray-600 transition ease-out delay-100">
+              <div id="dropArea" class="border-2 border-neutral-400 hover:border-neutral-100 hover:text-white border-dashed rounded-md m-4 p-4 col-span-6 h-60 flex flex-col justify-center items-center hover:bg-gray-600 transition ease-out delay-100">
                 <!-- Sin nada -->
-                <div class="flex flex-col justify-center items-center">
+                <div id="present" class="flex flex-col justify-center items-center">
                   <div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -126,10 +126,11 @@
                     <path d="M9 15l3 -3l3 3" />
                     <path d="M12 12l0 9" />
                   </svg>
+                  <label>Deje caer el archivo aquí</label>
                 </div>
               </div>
   
-              <div id="boxImgs" class="bg-gray-500 border rounded col-span-6 mt-0 ml-4 mr-4 p-2 flex flex-row wrap gap-2 hidden">
+              <div id="boxImgs" class="bg-gray-500 border rounded col-span-6 mt-0 ml-4 mr-4 p-2 flex flex-row flex-wrap gap-2 hidden">
   
               </div>
               <div class="relative m-4 col-span-3">
@@ -201,6 +202,11 @@
 
           </form>
         </div>
+      </div>
+
+      <div class="flex justify-end m-4">
+        <button class="border p-2 m-1 bg-neutral-300 hover:bg-neutral-400 rounded-md">Cerrar</button>
+        <button class="border p-2 m-1 bg-lime-500 hover:bg-lime-600 text-white rounded-md">Guardar</button>
       </div>
     </div>
   </div>  

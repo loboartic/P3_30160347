@@ -4,14 +4,27 @@
   <meta charset="UTF-8">
   <title>Mi aplicación</title>
   <!-- <link rel="stylesheet" href="css/index.css"> -->
-  <script src="js/tailwind.js"></script>
+  <link rel="stylesheet" href="css/tailwind.css">
 </head>
-<body>
+<body class="grid grid-cols-12">
+  <header class="col-span-12">
+    <nav class="w-full h-auto p-5 bg-slate-900 text-white flex items-center justify-evenly">
+      <a href="#">Inicio</a>
+      <a href="/login">Login</a>
+    </nav>
+  </header>
 
-  <section class="container">
-    <h1 class="text-bold">Jesús Rojas</h1>
-    <p>30.160.347</p>
-    <p>Sección 1</p>
+  <section class="bg-slate-400 col-span-12 h-96">
+    <img class="object-scale-down" src="./img/2.jpg">
+    <!-- <p class="absolute top-20 left-0 text-white text-center text-9xl">Suplementos deportivos...</p> -->
+  </section>
+
+  <section class="bg-neutral-600 col-span-8">
+    <img class="object-fill" src="#">
+  </section>
+
+  <section class="bg-gray-400 col-span-4">
+    <img class="object-fill" src="./img/3.jpg">
   </section>
 </body>
 </html>

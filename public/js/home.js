@@ -19,19 +19,42 @@ btnCreateProduct.addEventListener('click', openModal);
 btnCategoris.addEventListener('click', openModal)
 exitButton.addEventListener('click', closeModal);
 labelFile.addEventListener('click', fileHandler);
+categorys.addEventListener('click', handlerSecction)
+
+// ===== DRAG AND DROP =====
 dropArea.addEventListener('dragover', (event)=>{
     event.preventDefault();
     console.log("Hay un elemento encima");
+    const present = document.querySelector("#present");
+    const upload = document.querySelector("#upload");
+
+    present.classList.add('hidden');
+    upload.classList.remove('hidden')
+
 })
+
+dropArea.addEventListener('dragleave', (event)=> {
+    const present = document.querySelector("#present");
+    const upload = document.querySelector("#upload");
+
+    present.classList.remove('hidden');
+    upload.classList.add('hidden')
+
+})
+
 dropArea.addEventListener('drop', (event)=>{
     event.preventDefault();
-    console.log("Un elemento ha caido");
-    console.log(event.dataTransfer.files);
+    
+    const present = document.querySelector("#present");
+    const upload = document.querySelector("#upload");
 
-    createPreviwCard(event.dataTransfer.files)
+    present.classList.remove('hidden');
+    upload.classList.add('hidden')
+
+
+    createPreviwCard(event.dataTransfer.files);
 })
 
-categorys.addEventListener('click', handlerSecction)
 
 // ===== FUNCIONES =====
 
@@ -73,17 +96,29 @@ function createProductTemplate( data ) {
 
 }
 
-function createPreviwCard( files ) {
+async function createPreviwCard( files ) {
     const boxImgs = document.querySelector('#boxImgs');
     boxImgs.classList.remove('hidden');
 
     for (file of files) {
         const box = document.createElement('div');
         box.classList.add('border', 'rounded-lg', 'bg-blue-500')
-        box.textContent = file.name;
+        const img = document.createElement('img');
+        img.classList.add('w-[100px]', 'h-[100px]', 'object-fit-cover')
 
+        await readFiles(file, img);
+
+        box.appendChild(img)
         boxImgs.appendChild(box);
     };
+}
+
+async function readFiles( file, img ){
+    reader = new FileReader();
+    reader.onload = await function(){
+        img.src = reader.result;
+    }
+    reader.readAsDataURL(file)
 }
 
 function handlerSecction( event ) {

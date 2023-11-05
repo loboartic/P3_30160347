@@ -50,21 +50,42 @@ function mostrarAlerta(mensaje, nodo) {
 	}, 4000);
 }
 
+async function getFormValues( form ) {
+	return Object.fromEntries(
+		new FormData(form)
+	)
+}
+
 
 // ===== EVENTOS =====
 
-formulario.addEventListener('submit', (event)=>{
+formulario.addEventListener('submit', async (event)=>{
 	event.preventDefault();
-	console.log(Object.values(campos).includes(' '))
+	console.log(Object.values(campos).includes(''))
+
 	// Validar campos del formulario
-	if (Object.values(campos).includes(' ')) {
+	if (Object.values(campos).includes('')) {
 		let box = document.querySelector('#boxMsg')
 		mostrarAlerta( 'Todos los campos deben ser llenados', box );
 		return;
 	}
 
+	// Tomar datos del formulario
+	let data = await getFormValues(formulario);
+
+	console.log(data)
+
+	// Enviar datos al endpoint
+	data = await fetch('/login', {
+		method: 'POST',
+		body: data,
+	})
+
+	newData = await data.json();
+	console.log(newData)
+
 	// Enviar formulario
-	formulario.submit();
+	// formulario.submit();
 })
 
 inputMail.addEventListener('input', validarCampos);
