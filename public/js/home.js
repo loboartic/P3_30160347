@@ -41,17 +41,16 @@ function openModal( event ) {
     console.log("Se clickeo para aperturar el modal")
 
     const modal = document.querySelector("#modal");
-    const modalHeader = document.querySelector("#modal").children[0];
-    console.log(modal);
+    // const modalHeader = document.querySelector("#modal").children[0];
     const modalContent = modal.children[0].children[1];
-    console.log(modalContent);
+
 
     for (seccion of modalContent.children) {
         seccion.getAttribute('data-modal') == event.target.parentElement.getAttribute('data-origin') ? seccion.classList.remove('hidden'):seccion.classList.add('hidden');
     }
 
     modalContent.classList.remove('hidden')
-    modalHeader.classList.remove('hidden')
+    // modalHeader.classList.remove('hidden')
     modal.classList.remove('hidden')
 }
 

@@ -81,7 +81,7 @@
   <!-- Modal para agregar productos -->
   <div id="modal" class="fixed inset-0 bg-backdrop backdrop-filter backdrop-blur-sm z-50 flex items-center justify-center px-6 bg-slate-950/50 hidden ">
     <!-- Modal -->
-    <div class="h-auto overflow-hidden rounded-md shadow-2xl w-full max-w-3xl border hidden"> 
+    <div class="h-auto overflow-hidden rounded-md shadow-2xl w-full max-w-3xl border bg-gray-100"> 
         <!-- MOdal header -->
       <div class=" grid grid-cols-12">
         <p class="col-span-11 font-semibold m-4"> Crear Producto </p>
@@ -98,7 +98,7 @@
         <!-- modal content -->
         <!-- productos -->
         <div id="ModalProductos" data-modal="productos" class="hidden">
-          <div class="bg-gray-100">
+          <div class="">
             <!-- Modal Content -->
             <form class="grid grid-cols-6 gap-1">
               <!-- Contenedor -->
@@ -180,12 +180,26 @@
   
           </div>
 
-
-
+          
         </div>
         <!-- categorias -->
         <div id="ModalCategorys" data-modal="categorias" class="hidden">
-          <p></p>
+          <form class="grid grid-cols-6 gap-1">
+            
+            <div class="relative m-4 col-span-6">
+              <div class="absolute p-3 pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M4 4h6v6h-6z" />
+                  <path d="M14 4h6v6h-6z" />
+                  <path d="M4 14h6v6h-6z" />
+                  <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                </svg>
+              </div>
+              <input type="text" name="category" placeholder="Categoria" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+          </form>
         </div>
       </div>
     </div>

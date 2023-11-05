@@ -55,9 +55,9 @@ function mostrarAlerta(mensaje, nodo) {
 
 formulario.addEventListener('submit', (event)=>{
 	event.preventDefault();
-
+	console.log(Object.values(campos).includes(' '))
 	// Validar campos del formulario
-	if (Object.values(campos).includes('')) {
+	if (Object.values(campos).includes(' ')) {
 		let box = document.querySelector('#boxMsg')
 		mostrarAlerta( 'Todos los campos deben ser llenados', box );
 		return;
