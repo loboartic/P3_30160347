@@ -4,7 +4,7 @@ module.exports = {
     relative: true,
     files:[
       "./views/**/*.ejs",
-      "./public/js/**/*.{html, js, ejs}"
+      "./public/js/**/*.js"
     ],
   },
   theme: {

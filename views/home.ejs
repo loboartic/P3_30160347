@@ -23,18 +23,6 @@
 
       <a href="#" class="text-white font-semibold" id="categorys">Categorias</a>
       <a href="#" class="text-white font-semibold" id="highlightLink">Destacados</a>
-
-
-      <div class="relative m-4">
-        <div class="absolute pointer-events-none pt-3">
-          <svg xmlns="http://www.w3.org/2000/svg" class=" absolute icon icon-tabler icon-tabler-search" width="44" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-            <path d="M21 21l-6 -6" />
-          </svg>
-        </div>
-        <input type="text" placeholder="Buscar producto" class="pl-10 bg-gray-200 border rounded-lg p-3 outline-none hover:ring-2">
-      </div>
     </nav>
 
      <div>
@@ -50,10 +38,22 @@
      </div>
   </header>
 
-  <section id="Productos" class="container h-[100vh] w-[100vw] p-3" data-origin="productos">
-    <button id="btnCreateProduct" class="bg-neutral-100 border rounded-md p-2 m-4 hover:text-white hover:bg-neutral-500">Crear Producto</button>
+  <section id="Productos" class="h-[100vh] w-[100vw] p-3" data-origin="productos">
+    <div class="grid grid-cols-12">
+      <button id="btnCreateProduct" class="bg-neutral-100 border rounded-md p-2 m-4 hover:text-white hover:bg-neutral-500 col-span-2 w-ful">Crear Producto</button>
+      <div class="relative m-4 col-span-10">
+        <div class="absolute pointer-events-none pt-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class=" absolute icon icon-tabler icon-tabler-search" width="44" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+            <path d="M21 21l-6 -6" />
+          </svg>
+        </div>
+        <input type="text" placeholder="Buscar producto" class="pl-10 bg-gray-200 border rounded-lg p-3 outline-none hover:ring-2 w-full">
+      </div>
+    </div>
     <!-- Modelo Tarjeta -->  
-    <div class="border rounded-md bg-blue-500 shadow-xl h-[240px] w-[200px] grid grid-rows-6 hover:-translate-y-3 transition ease-in delay-150">
+    <div class="border rounded-md bg-neutral-200 shadow-xl h-[240px] w-[200px] grid grid-rows-6 hover:-translate-y-3 transition ease-in delay-150">
       <div class="bg-gray-800 row-span-4 rounded-t-lg">
         <div id="content" class="grid grid-cols-2">
           <p>destacado</p>
@@ -74,8 +74,23 @@
     </div>
   </section>
 
-  <section id="Categorias" class="container h-[100vh] w-[100vw] p-3 flex hidden" data-origin="categorias">
-    <button id="btnCategoris" class="bg-neutral-100 border rounded-md p-2 m-4 hover:text-white hover:bg-neutral-500">Crear Categoria</button>
+  <section id="Categorias" class="h-[100vh] w-[100vw] p-3 hidden" data-origin="categorias">
+    <div class="grid grid-cols-12">
+      <button id="btnCategoris" class="col-span-2 bg-neutral-100 border rounded-md p-2 m-4 hover:text-white hover:bg-neutral-500 w-full">Crear Categoria</button>
+      <div class="relative m-4 col-span-10">
+        <div class="absolute pointer-events-none pt-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class=" absolute icon icon-tabler icon-tabler-search" width="44" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+            <path d="M21 21l-6 -6" />
+          </svg>
+        </div>
+        <input type="text" placeholder="Buscar producto" class="pl-10 bg-gray-200 border rounded-lg p-3 outline-none hover:ring-2 w-full">
+      </div>
+    </div>
+    <div class="grid grid-cols-12">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nisi voluptatum quia quo accusantium a, odio ex asperiores accusamus. Autem perferendis officia itaque alias assumenda quam totam iste nihil voluptatibus.
+    </div>
   </section>
 
   <!-- Modal para agregar productos -->
@@ -205,8 +220,8 @@
       </div>
 
       <div class="flex justify-end m-4">
-        <button class="border p-2 m-1 bg-neutral-300 hover:bg-neutral-400 rounded-md">Cerrar</button>
-        <button class="border p-2 m-1 bg-lime-500 hover:bg-lime-600 text-white rounded-md">Guardar</button>
+        <button class="border px-6 py-2 m-1 bg-neutral-300 hover:bg-neutral-400 rounded-md">Cerrar</button>
+        <button class="border px-6 py-2 m-1 bg-lime-500 hover:bg-lime-600 text-white rounded-md">Guardar</button>
       </div>
     </div>
   </div>  
