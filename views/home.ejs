@@ -96,7 +96,7 @@
   <!-- Modal para agregar productos -->
   <div id="modal" class="fixed inset-0 overflow-y-auto overflow-y-scroll bg-backdrop backdrop-filter backdrop-blur-sm z-50 flex items-center justify-center px-6 bg-slate-950/50 hidden ">
     <!-- Modal -->
-    <div class="h-auto overflow-y-auto overflow-y-scroll rounded-md shadow-2xl w-full max-w-3xl border bg-gray-100"> 
+    <div class=" relative h-auto overflow-y-auto overflow-y-scroll rounded-md shadow-2xl w-full max-w-3xl border bg-gray-100"> 
         <!-- MOdal header -->
       <div class=" grid grid-cols-12">
         <p class="col-span-11 font-semibold m-4"> Crear Producto </p>
@@ -149,6 +149,7 @@
   
               </div>
               <div class="relative m-4 col-span-3">
+                <label class="absolute left-12 top-4">Nombre del producto</label>
                 <div class="absolute p-3 pointer-events-none">
                   <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-box-seam" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -188,7 +189,7 @@
               </div>
   
               <div class=" m-4 col-span-3">
-                <select class="bg-gray-100 p-4 border w-full">
+                <select class="bg-gray-100 p-4 border w-full rounded-md text-gray-700">
                   <option value="0">Seleccione una opcion...</option>
                 </select>
               </div>

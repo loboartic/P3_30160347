@@ -639,8 +639,16 @@ video {
   left: 0px;
 }
 
+.left-12 {
+  left: 3rem;
+}
+
 .top-20 {
   top: 5rem;
+}
+
+.top-4 {
+  top: 1rem;
 }
 
 .isolate {
@@ -653,6 +661,10 @@ video {
 
 .z-50 {
   z-index: 50;
+}
+
+.col-span-10 {
+  grid-column: span 10 / span 10;
 }
 
 .col-span-11 {
@@ -681,14 +693,6 @@ video {
 
 .col-span-8 {
   grid-column: span 8 / span 8;
-}
-
-.col-span-7 {
-  grid-column: span 7 / span 7;
-}
-
-.col-span-10 {
-  grid-column: span 10 / span 10;
 }
 
 .row-span-4 {
