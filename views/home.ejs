@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>Inicio</title>
   <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.growl.css">
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.growl.js"></script>
 </head>
 <body>
   
@@ -94,28 +97,26 @@
   </section>
 
   <!-- Modal para agregar productos -->
-  <div id="modal" class="fixed inset-0 overflow-y-auto overflow-y-scroll bg-backdrop backdrop-filter backdrop-blur-sm z-50 flex items-center justify-center px-6 bg-slate-950/50 hidden ">
+  <div id="modal" class="fixed inset-0 bg-backdrop backdrop-filter backdrop-blur-sm z-50 flex items-center justify-center px-6 transition-colors duration-500 bg-slate-950/50 hidden ">
     <!-- Modal -->
-    <div class=" relative h-auto overflow-y-auto overflow-y-scroll rounded-md shadow-2xl w-full max-w-3xl border bg-gray-100"> 
+    <div class="rounded-md shadow-2xl w-full h-auto max-w-lg border bg-gray-100"> 
         <!-- MOdal header -->
-      <div class=" grid grid-cols-12">
+      <div class="grid grid-cols-12">
         <p class="col-span-11 font-semibold m-4"> Crear Producto </p>
-        <span class="exitButton justify-end">
-          <svg xmlns="http://www.w3.org/2000/svg" class="pr-0 icon icon-tabler icon-tabler-xbox-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path d="M12 21a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9a9 9 0 0 0 -9 9a9 9 0 0 0 9 9z" />
-          <path d="M9 8l6 8" />
-          <path d="M15 8l-6 8" />
+        <span class="exitButton justify-end place-items-center left-4 top-4 hover:bg-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </svg></span>
       </div>
-      <div class="">
-    
+      <div class="overflow-y-scroll">
+
         <!-- modal content -->
         <!-- productos -->
-        <div id="ModalProductos" data-modal="productos" class="hidden">
-          <div class="">
+        <div id="ModalProductos" data-modal="productos" class=" hidden">
+          <div class="" border-2 border-blue-500">
             <!-- Modal Content -->
-            <form class="grid grid-cols-6 gap-1">
+            <form id="Productos" class="grid grid-cols-6 gap-1">
               <!-- Contenedor -->
               <div id="dropArea" class="border-2 border-neutral-400 hover:border-neutral-100 hover:text-white border-dashed rounded-md m-4 p-4 col-span-6 h-60 flex flex-col justify-center items-center hover:bg-gray-600 transition ease-out delay-100">
                 <!-- Sin nada -->
@@ -149,7 +150,6 @@
   
               </div>
               <div class="relative m-4 col-span-3">
-                <label class="absolute left-12 top-4">Nombre del producto</label>
                 <div class="absolute p-3 pointer-events-none">
                   <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-box-seam" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -160,7 +160,7 @@
                     <path d="M12 12l-8 -4.5" />
                   </svg>
                 </div>
-                <input type="text" name="mail" placeholder="Nombre del producto" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+                <input type="text" name="name" placeholder="Nombre del producto" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
               </div>
   
   
@@ -173,7 +173,8 @@
                     <path d="M12 7v10" />
                   </svg>
                 </div>
-                <input type="text" name="mail" placeholder="Precio Unitario" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+                <input type="text" name="price" placeholder="Precio Unitario" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+                <div class="errorMessage hidden text-red-500 font-semibold">El precio deben ser solo numeros</div>
               </div>
   
                 <div class="relative m-4 col-span-3">
@@ -185,7 +186,7 @@
                     <path d="M12 7v10" />
                   </svg>
                 </div>
-                <input type="text" name="mail" placeholder="Codigo" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+                <input type="text" name="code" placeholder="Codigo" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
               </div>
   
               <div class=" m-4 col-span-3">
@@ -194,35 +195,36 @@
                 </select>
               </div>
             </form>
-  
           </div>
 
           
         </div>
         <!-- categorias -->
         <div id="ModalCategorys" data-modal="categorias" class="hidden">
-          <form class="grid grid-cols-6 gap-1">
-            
-            <div class="relative m-4 col-span-6">
-              <div class="absolute p-3 pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M4 4h6v6h-6z" />
-                  <path d="M14 4h6v6h-6z" />
-                  <path d="M4 14h6v6h-6z" />
-                  <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                </svg>
+          <div>
+            <form class="grid grid-cols-6 gap-1">
+              
+              <div class="relative m-4 col-span-6">
+                <div class="absolute p-3 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M4 4h6v6h-6z" />
+                    <path d="M14 4h6v6h-6z" />
+                    <path d="M4 14h6v6h-6z" />
+                    <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                  </svg>
+                </div>
+                <input type="text" name="name" placeholder="Categoria" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
               </div>
-              <input type="text" name="category" placeholder="Categoria" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
 
-          </form>
+            </form>
+          </div>
         </div>
       </div>
 
       <div class="flex justify-end m-4">
         <button class="border px-6 py-2 m-1 bg-neutral-300 hover:bg-neutral-400 rounded-md">Cerrar</button>
-        <button class="border px-6 py-2 m-1 bg-lime-500 hover:bg-lime-600 text-white rounded-md">Guardar</button>
+        <button id="save" class="border px-6 py-2 m-1 bg-lime-500 hover:bg-lime-600 text-white rounded-md">Guardar</button>
       </div>
     </div>
   </div>  

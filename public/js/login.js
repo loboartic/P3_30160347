@@ -50,12 +50,12 @@ function mostrarAlerta(mensaje, nodo) {
 	}, 4000);
 }
 
-async function getFormValues( form ) {
-	return Object.fromEntries(
-		new FormData(form)
-	)
+function getFormValues(formulario){
+    return Object.fromEntries(
+        // creamos un nuevo formulario
+        new FormData(formulario)
+    )
 }
-
 
 // ===== EVENTOS =====
 
@@ -78,14 +78,18 @@ formulario.addEventListener('submit', async (event)=>{
 	// Enviar datos al endpoint
 	data = await fetch('/login', {
 		method: 'POST',
-		body: data,
+		body: JSON.stringify(data),
+		headers: {"Content-type": "application/json; charset=UTF-8"}
 	})
 
-	newData = await data.json();
+	newData = await data;
 	console.log(newData)
+	window.location.href = newData.url;
 
-	// Enviar formulario
-	// formulario.submit();
+	/*if (newData.success) {
+		// Enviar formulario
+		formulario.submit();
+	}*/
 })
 
 inputMail.addEventListener('input', validarCampos);
