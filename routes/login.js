@@ -16,10 +16,6 @@ router.post('/', (req, res) => {
 	console.log(data);
 	if (data.mail == MASTER_ADMIN && data.password == MASTER_PASSWORD) {
 		res.redirect('/home');
-		/*res.json({
-			success: true,
-			message: 'Validado'
-		});*/
 		return;
 	}
 

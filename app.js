@@ -10,10 +10,6 @@ const {
   MASTER_ADMIN, MASTER_PASSWORD,
 } = process.env;
 
-
-console.log("Funcionando las varibles de entorno");
-console.log(MASTER_ADMIN);
-
 // ===== RUTAS =====
 
 
@@ -44,13 +40,13 @@ app.use('/login', login);
 
 // ==== ENDPOINTS ====
 app.get('/', (req, res) => {
-  console.log(req.session)
+
   res.render('index');
 });
 
 
 app.get('/home', (req, res) => {
-  console.log(req.session)
+
   res.render('home');
 });
 
