@@ -1,27 +1,29 @@
 module.exports = (sequelize, DataTypes) => {
-    const Product = sequelize.define("product", {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
+    const Product = sequelize.define(
+        'product',
+        {
+            id: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true,
+            },
+            name: {
+                type: DataTypes.STRING,
+            },
+            price: {
+                type: DataTypes.STRING,
+            },
+            code: {
+                type: DataTypes.STRING,
+            },
         },
-        name: {
-            type: DataTypes.STRING,
+        {
+            paranoid: true,
+            freezeTableName: true,
         },
-        price: {
-            type: DataTypes.STRING,
-        },
-        code: {
-            type: DataTypes.STRING,
-        },
-    },{
-        paranoid: true,
-        freezeTableName: true
-    })
+    );
 
-    Product.associate = models => {
-        
-    }
+    Product.associate = (models) => {};
 
     return Product;
-}
+};
