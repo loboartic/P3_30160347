@@ -7,7 +7,9 @@ const login = require('./routes/login.js');
 const morgan = require('morgan');
 const ejs = require('ejs');
 const db = require('./database/models/index.js');
-const { MASTER_ADMIN, MASTER_PASSWORD } = process.env;
+
+// VARIABLES DE ENTORNO
+const { MASTER_ADMIN, MASTER_PASSWORD, PORT } = process.env;
 
 // ===== RUTAS =====
 
@@ -56,7 +58,6 @@ app.get('/home', async (req, res) => {
         products.push(vals)
     }
 
-    console.log(products)
     res.render('home', {'products': products});
 });
 
@@ -64,22 +65,21 @@ app.post('/add/product', async (req, res) => {
     const data = req.body;
 
     // Crear objetos con los valores
-    let valores = {
+    let values = {
         name: data.name,
         price: data.price,
         code: data.code,
     };
 
-    if (Object.values(valores).includes('')) {
-        console.log(Object.values(valores).includes(''))
+    if (Object.values(values).includes('')) {
         res.json({
             success: false,
             message: 'Hubo un error con la información suministrada',
         });
-        return
+        return;
     }
 
-    let product = await db.product.create(valores);
+    let product = await db.product.create(values);
 
     if (product) {
         // Respuesta el endpoint
@@ -98,16 +98,21 @@ app.post('/add/product', async (req, res) => {
     }
 });
 
+// Añadir una categoria
 app.post('/add/category', async (req, res) => {
+    // Obtener la data de la petic
     const data = req.body;
 
+    // Guardar un producto    
     let category = await db.category.create(data);
 
+    // Retornar una respuesta JSON
     res.json({
         success: true,
-        message: 'Categoria creada de forma exitosa',
+        message: '¡Categoria creada exitosamente!',
         data: {
             category_id: category.id,
+            name: category.name,
         },
     });
 });
