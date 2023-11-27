@@ -6,7 +6,10 @@ const path = require('path');
 const login = require('./routes/login.js');
 const morgan = require('morgan');
 const ejs = require('ejs');
+// Base de datos
 const db = require('./database/models/index.js');
+// Multer para el guardado de imagenes
+const multer = require('multer');
 
 // VARIABLES DE ENTORNO
 const { MASTER_ADMIN, MASTER_PASSWORD, PORT } = process.env;
@@ -37,6 +40,21 @@ app.use(express.urlencoded({ extended: true }));
 // ===== Manejadores de rutas =====
 app.use('/login', login);
 
+// Congiguración de multer
+const storage = multer.diskStorage({
+    // Función que guarda en la carpeta de destino
+    destination: function (req, file, cb ) {
+        cb( null, 'uploads/');
+    },
+    // Función que procesa el nombre del archivo
+    filename: function ( req, file, cb ) {
+        cb( null, Date.now() + '-' + file.originalname)
+    }
+})
+
+const upload = multer({ storage: storage });
+console.log(upload)
+
 // ==== ENDPOINTS ====
 app.get('/', (req, res) => {
     res.render('index');
@@ -44,10 +62,14 @@ app.get('/', (req, res) => {
 
 // === HOME ===
 app.get('/home', async (req, res) => {
+    // Obtener todos los registros de la base de datos
     let productsQuery = await db.product.findAll()
 
+    // Array vacio para ser enviado al controlador
     let products = []
 
+    // Iterar en cada uno de los registros para crear un objeto y agregarlo
+    // a la variable de productos
     for (product of productsQuery) {
         let vals = {
             id: product.id,
@@ -57,7 +79,7 @@ app.get('/home', async (req, res) => {
         }
         products.push(vals)
     }
-
+    
     res.render('home', {'products': products});
 });
 
@@ -116,6 +138,15 @@ app.post('/add/category', async (req, res) => {
         },
     });
 });
+
+app.post('/upload-image', upload.single('imagen'), async ( req, res) =>{
+    const imageUrl = req.file;
+    console.log(req.body)
+    console.log(imageUrl)
+    const nuevaImagen = await db.image.create({ url: imageUrl });
+    console.log(nuevaImagen)
+    return res.status(200).json({ message: 'Imagen subida y URL guardada en la base de datos', imageUrl });
+})
 
 // ==== SERVER ====
 app.listen(3000, () => {

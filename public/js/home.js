@@ -9,6 +9,7 @@ const dropArea = document.querySelector('#dropArea');
 const save = document.querySelector('#save');
 /*const saveBtn = document.querySelector('#'); */
 const inputPrice = document.querySelector('input[name="price"]');
+const uploadImgs = document.querySelector('#uploadImgs');
 
 // ==== SECCIONES ====
 const seccionProductos = document.querySelector('#Productos');
@@ -22,6 +23,27 @@ labelFile.addEventListener('click', fileHandler);
 categorys.addEventListener('click', handlerSecction);
 save.addEventListener('click', saveBtn);
 inputPrice.addEventListener('input', handlerIntField);
+uploadImgs.addEventListener('click', async ()=> {
+    event.preventDefault();
+
+    let inputFile = document.querySelector("#inputFile");
+
+    // Crea un objeto FormData y agrega el archivo al formulario
+    const formData = new FormData();
+    formData.append('imagen', inputFile.files);
+
+
+    console.log(formData.get('imagen'))
+
+    let datos = await fetch('/upload-image', {
+        method: 'POST',
+        body: formData,
+    });
+
+    // Recepción de la respuesta
+    let response = await datos.json();
+
+})
 
 // ===== DRAG AND DROP =====
 dropArea.addEventListener('dragover', (event) => {

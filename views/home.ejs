@@ -10,11 +10,11 @@
 </head>
 <body>
   
-  <header class="w-full bg-orange-600 shadow-md h-16 sm:flex-row flex justify-center items-center justify-evenly">
+  <header class="w-full bg-[#F5830B]  shadow-md h-16 sm:flex-row flex justify-center items-center justify-evenly ">
     
     <div>
-      <button class="col-span-2 bg-gray-300 rounded-full p-1">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <button class="col-span-2 bg-neutral-950 rounded-full p-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fafafa" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
         <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
@@ -24,14 +24,14 @@
 
     <nav class="flex justify-evenly w-1/6 items-center justify-center ">
 
-      <a href="#" class="text-white font-semibold" id="categorys">Categorias</a>
-      <a href="#" class="text-white font-semibold" id="highlightLink">Destacados</a>
+      <a href="#" class="font-semibold px-3" id="categorys">Categorias</a>
+      <a href="#" class="font-semibold px-3" id="highlightLink">Destacados</a>
     </nav>
 
      <div>
       <button class="col-span-2 rounded-lg p-1 my-1">
         <!-- Icono de salida -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="30" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fafafa" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="30" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
           <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
           <path d="M9 12h12l-3 -3" />
@@ -41,8 +41,8 @@
      </div>
   </header>
 
-  <section id="Productos" class="h-[100vh] w-[100vw] p-3" data-origin="productos">
-    <div class="grid grid-cols-12">
+  <section id="Productos" class="h-[100vh] w-[100vw] p-3 bg-neutral-800" data-origin="productos">
+    <div class="grid grid-cols-12 ">
       <button id="btnCreateProduct" class="bg-neutral-100 border rounded-md p-2 m-4 hover:text-white hover:bg-neutral-500 col-span-2 w-ful">Crear Producto</button>
       <div class="relative m-4 col-span-10">
         <div class="absolute pointer-events-none pt-3">
@@ -136,6 +136,7 @@
               <div id="boxImgs" class="bg-gray-500 border rounded col-span-6 mt-0 ml-4 mr-4 p-2 flex flex-row flex-wrap gap-2 hidden">
   
               </div>
+              <button id="uploadImgs" class="border rounded-md bg-blue-100">Enviar imagenes de prueba</button>
               <div class="relative m-4 col-span-3">
                 <div class="absolute p-3 pointer-events-none">
                   <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-box-seam" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
