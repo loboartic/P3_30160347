@@ -84,19 +84,23 @@ function openModal(event) {
     console.log('Se clickeo para aperturar el modal');
 
     const modal = document.querySelector('#modal');
+    console.log(modal.children)
+    modal.classList.remove('hidden')
+    modal.children.classList.remove('hidden')
+    modal.children.children.classList.remove('hidden')
 
-    const modalContent = modal.children[0].children[1];
+/*const modalContent = modal.children[0].children[1];
 
-    for (seccion of modalContent.children) {
-        seccion.getAttribute('data-modal') ==
-        event.target.parentElement.parentElement.getAttribute('data-origin')
-            ? seccion.classList.remove('hidden')
-            : seccion.classList.add('hidden');
-    }
+for (seccion of modalContent.children) {
+    seccion.getAttribute("data-modal") ==
+    event.target.parentElement.parentElement.getAttribute("data-origin")
+        ? seccion.classList.remove("hidden")
+        : seccion.classList.add("hidden");
+}
 
-    modalContent.classList.remove('hidden');
-    // modalHeader.classList.remove('hidden')
-    modal.classList.remove('hidden');
+modalContent.classList.remove("hidden");
+// modalHeader.classList.remove('hidden')
+modal.classList.remove("hidden");*/
 }
 
 // CIERRE DE MODAL

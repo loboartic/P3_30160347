@@ -14,18 +14,19 @@
       <!-- Formulario -->
     	<form class="flex flex-col p-10 justify-center items-center" method="POST" action="/login">
 
-        <h1 class="text-xl font-bold">Iniciar Sesión</h1>
+        <h1 class="text-2xl font-bold uppercase">Iniciar Sesión</h1>
 
         
         <!-- <label class="self-start mb-0">Correo</label> -->
         <div class="relative w-full m-4">
           <div class="absolute p-3 pointer-events-none">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-gray-500">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-            </svg>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+
 
           </div>
-          <input type="text" name="mail" placeholder="Correo" class="appearance-none bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border w-full focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+          <input type="text" name="mail" placeholder="Correo" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-lg focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
         </div>
         
         <div class="relative w-full m-4">
@@ -35,10 +36,10 @@
           </svg>
 
           </div>
-          <input type="password" name="password" placeholder="Contaseña" class="appearance-none bg-gray-100 pl-14 p-4 text-gray-700 rounded-md border w-full focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
+          <input type="password" name="password" placeholder="Contaseña" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-lg focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
         </div>
 
-        <button id="btnLogin" class="bg-lime-500 border rounded-md w-100 text-white w-full p-3 my-4 focus:ring-2 hover:bg-lime-600 flex items-center justify-center duration-300">
+        <button id="btnLogin" class="bg-lime-500 rounded-lg w-100 text-white w-full p-3 my-4 focus:ring-2 hover:bg-lime-600 flex items-center justify-center duration-300">
           <i class="mr-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
