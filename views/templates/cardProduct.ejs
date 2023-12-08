@@ -1,9 +1,5 @@
-<div class="border rounded-md bg-neutral-200 shadow-xl h-[280px] w-[200px] grid grid-rows-6 hover:-translate-y-3 transition ease-in delay-150">
-  <div class="bg-gray-800 row-span-4 rounded-t-lg">
-    <div id="content" class="grid grid-cols-2">
-      <p>destacado</p>
-      <p>Info</p>
-    </div>
+<div class="border rounded-md bg-neutral-50 shadow-md h-[280px] w-[390px] grid grid-cols-12 hover:-translate-y-3 transition ease-in delay-150">
+  <div class="bg-gray-800 col-span-5 rounded-l-md">
     <div class="grid place-items-center justify-center align-center">
       <!-- Icono de camara -->
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-off" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -16,9 +12,10 @@
       </svg>
     </div>
   </div>
-  <div class="flex flex-col p-2">
-    <p class="text-gray-950"><%= product.name %></p>
-    <p class="text-gray-600 font-bold">$<%= product.price %></p>
+
+  <div class="flex flex-col p-4">
+    <p class="text-gray-950 text-3xl pb-2"><%= product.name %></p>
+    <p class="text-gray-600 font-bold rounded border">$<%= product.price %></p>
     <p class="">Código: <span class="text-orange-700"><%=product.code %></span></p>
   </div>
   
