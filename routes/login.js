@@ -2,23 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const { MASTER_ADMIN, MASTER_PASSWORD } = process.env;
+const { login, loginAuthenticate } = require('../controllers/login.controllers.js')
 
-router.get('/', (req, res) => {
-	res.render('login');
-});
+router.get('/', login);
 
-router.post('/', (req, res) => {
-	const data = req.body;
-
-	if (data.mail == MASTER_ADMIN && data.password == MASTER_PASSWORD) {
-		res.redirect('/home');
-		return;
-	}
-
-	res.json({
-		success: false,
-		message: 'Correo o contraseña invalidos',
-	});
-});
+router.post('/', loginAuthenticate);
 
 module.exports = router;

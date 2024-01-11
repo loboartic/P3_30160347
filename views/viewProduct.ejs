@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio</title>
+  <link rel="stylesheet" href="/css/tailwind.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <!-- Navbar -->
+  <nav class="bg-gray-800 p-4 text-white fixed top-0 left-0 right-0">
+    <div class="container mx-auto">
+      <span class="text-2xl font-bold">Nombre</span>
+    </div>
+  </nav>
+
+  <!-- Contenido del Producto -->
+  <div class="flex items-center justify-center mt-16">
+    <!-- Sección de Imagen del Producto -->
+    <div class="mr-8">
+      <img src="tu_imagen.jpg" alt="Imagen del Producto" class="w-48 h-48 object-cover rounded shadow-lg">
+      <div class="mt-4">
+        <!-- Botones de Eliminación y Edición -->
+        <button class="bg-red-500 text-white py-2 px-4 rounded-full mr-2">Eliminar</button>
+        <button class="bg-blue-500 text-white py-2 px-4 rounded-full">Editar</button>
+      </div>
+    </div>
+
+    <!-- Detalles del Producto -->
+    <div>
+      <!-- Campos de Información -->
+      <div class="mb-4">
+        <label class="block text-lg text-gray-700 font-bold mb-2">Nombre:</label>
+        <p class="text-gray-800"> <%=product.name %> </p>
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-lg text-gray-700 font-bold mb-2">Precio de Venta:</label>
+        <p class="text-gray-800"> $ <%=product.code %></p>
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-lg text-gray-700 font-bold mb-2">Código:</label>
+        <p class="text-gray-800"> <%=product.price %> </p>
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2">Cantidad de Ventas:</label>
+        <p class="text-gray-800">50</p>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="flex">
+        <button class="border bg-green-500 border-green-600 text-white py-2 px-4 rounded mr-2 shadow">Llenar Inventario</button>
+        <button class="border bg-blue-500 border-blue-600 text-white py-2 px-4 rounded shadow">Actualizar</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -10,46 +10,81 @@
 </head>
 <body>
   
-  <header class="w-full bg-blue-400 shadow-md h-16 sm:flex-row flex justify-center items-center justify-evenly ">
-    
-    <div>
-      <button class="col-span-2 bg-neutral-950 rounded-full p-1">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fafafa" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-        </svg>
-      </button>
-    </div>
-
-    <nav class="flex justify-evenly w-1/6 items-center justify-center">
-      <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="products">Productos</a>
-      <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="categorys">Categorias</a>
-      <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="highlightLink">Destacados</a>
-    </nav>
-
-     <div>
-      <button class="col-span-2 rounded-lg p-1 my-1">
-        <!-- Icono de salida -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="30" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <header class="w-full bg-gray-800 shadow-md h-16 sm:flex-row flex justify-center items-center justify-evenly ">
+      
+      <div>
+        <button class="col-span-2 bg-neutral-950 rounded-full p-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fafafa" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
-          <path d="M9 12h12l-3 -3" />
-          <path d="M18 15l3 -3" />
-        </svg>
-      </button>
-     </div>
-  </header>
+          <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+          <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+          </svg>
+        </button>
+      </div>
 
-  <section id="Productos" class="h-full w-[100vw]" data-origin="productos">
-    <div class="w-full">
-      <div class="grid grid-cols-12 items-center border shadow">
+      <nav class="flex justify-evenly w-1/6 items-center justify-center">
+        <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="products">Productos</a>
+        <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="categorys">Categorias</a>
+        <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="highlightLink">Destacados</a>
+      </nav>
+
+       <div>
+        <button class="col-span-2 rounded p-1 my-1">
+          <!-- Icono de salida -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="30" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+            <path d="M9 12h12l-3 -3" />
+            <path d="M18 15l3 -3" />
+          </svg>
+        </button>
+       </div>
+    </header>
+
+    <section id="Productos" class="h-[100vh] w-[100vw] bg-gray-50" data-origin="productos">
+      <div class="w-full bg-neutral-50">
+        <div class="grid grid-cols-12 items-center border shadow">
 
 
-        <button id="btnCreateProduct" class="justify-center rounded-lg m-4 bg-white px-4 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:w-auto sm:ml-3 col-span-12 sm:col-span-2">Crear Producto</button>
+          <button id="btnCreateProduct" class="justify-center rounded m-2 bg-white px-4 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:w-auto sm:ml-3 col-span-12 sm:col-span-2">Crear Producto</button>
 
 
-        <div class="relative sm:col-span-10 mr-4">
+          <div class="relative col-span-12 m-2 sm:col-span-10 sm:mr-4 ">
+            <div class="absolute pointer-events-none pt-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class=" absolute icon icon-tabler icon-tabler-search" width="44" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                <path d="M21 21l-6 -6" />
+              </svg>
+            </div>
+            <input type="text" placeholder="Buscar producto" class="pl-10 bg-gray-100 shadow-inner border border-gray-300 rounded p-3 outline-none hover:ring-2 w-full">
+          </div>
+        
+        </div>
+      </div>
+
+      <!-- 
+
+        CAJA DE TARJETAS 
+
+      -->  
+      <div class="flex flex-wrap gap-4 mx-6 my-6 p-8 border rounded shadow max-h-2xl text-center">
+        <% if (products.length > 0) { %>
+          <% for (const product of products) { %>
+            <%- include('templates/cardProduct', { product: product }); %>
+          <% } %>
+        <% } else { %>
+          <p class="text-gray-900 text-center font-bold">No hay productos, presione <span class="px-4 py-2 border text-semibold m-2 rounded bg-white">crear producto</span></p>
+        <% } %>
+
+        
+      </div>
+    </section>
+
+    <section id="Categorias" class="h-[100vh] w-[100vw] p-3 hidden" data-origin="categorias">
+      <div class="grid grid-cols-12">
+        <button id="btnCategoris" class="col-span-2 bg-neutral-100 border rounded p-2 m-4 hover:text-white hover:bg-neutral-500 w-full">Crear Categoria</button>
+        <div class="relative m-4 col-span-10">
           <div class="absolute pointer-events-none pt-3">
             <svg xmlns="http://www.w3.org/2000/svg" class=" absolute icon icon-tabler icon-tabler-search" width="44" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -57,180 +92,66 @@
               <path d="M21 21l-6 -6" />
             </svg>
           </div>
-          <input type="text" placeholder="Buscar producto" class="pl-10 bg-gray-100 rounded-lg p-3 outline-none hover:ring-2 w-full">
+          <input type="text" placeholder="Buscar producto" class="pl-10 bg-gray-200 border rounded p-3 outline-none hover:ring-2 w-full">
         </div>
-      
       </div>
-    </div>
-
-    <!-- CAJA DE TARJETAS -->  
-    <div class="flex flex-wrap gap-4 mx-20 my-6 p-8 border rounded-lg shadow h-[100vh]">
-      
-      <% products.forEach(async function(product){ %>
-        <%- include('templates/cardProduct', {product:product}); %>
-      <% }); %>
-    </div>
-  </section>
-
-  <section id="Categorias" class="h-[100vh] w-[100vw] p-3 hidden" data-origin="categorias">
-    <div class="grid grid-cols-12">
-      <button id="btnCategoris" class="col-span-2 bg-neutral-100 border rounded-lg p-2 m-4 hover:text-white hover:bg-neutral-500 w-full">Crear Categoria</button>
-      <div class="relative m-4 col-span-10">
-        <div class="absolute pointer-events-none pt-3">
-          <svg xmlns="http://www.w3.org/2000/svg" class=" absolute icon icon-tabler icon-tabler-search" width="44" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-            <path d="M21 21l-6 -6" />
-          </svg>
-        </div>
-        <input type="text" placeholder="Buscar producto" class="pl-10 bg-gray-200 border rounded-lg p-3 outline-none hover:ring-2 w-full">
+      <div class="grid grid-cols-12">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nisi voluptatum quia quo accusantium a, odio ex asperiores accusamus. Autem perferendis officia itaque alias assumenda quam totam iste nihil voluptatibus.
       </div>
-    </div>
-    <div class="grid grid-cols-12">
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nisi voluptatum quia quo accusantium a, odio ex asperiores accusamus. Autem perferendis officia itaque alias assumenda quam totam iste nihil voluptatibus.
-    </div>
-  </section>
+    </section>
 
 
+    <div id="backgroundModal" class="fixed inset-0 bg-neutral-800 bg-opacity-75 bg-backdrop backdrop-filter backdrop-blur-sm transition-opacity transition-all hidden">
 
-  <div id="modal" class="fixed inset-0 bg-neutral-800 bg-opacity-75 bg-backdrop backdrop-filter backdrop-blur-sm transition-opacity hidden">
-    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          <!--
-            Modal panel, show/hide based on modal state.
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            
+            <div class="flex justify-center items-center">
 
-            Entering: "ease-out duration-300"
-              From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              To: "opacity-100 translate-y-0 sm:scale-100"
-            Leaving: "ease-in duration-200"
-              From: "opacity-100 translate-y-0 sm:scale-100"
-              To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          -->
-            <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-              
-            <!-- CONTENEDOR PARA EL FORMULARIO -->
-                <div class="sm:flex sm:items-start">
-                    <!-- FORMULARIO -->
-                    <form id="Productos" class="ProductosForm grid grid-cols-6 gap-1">
-                      <!-- Contenedor -->
-                      <div id="dropArea" class="border-2 border-neutral-400 hover:border-neutral-100 hover:text-white border-dashed rounded-xl m-2 p-4 col-span-6 h-60 flex flex-col justify-center items-center hover:bg-gray-600 transition ease-out delay-100">
-                        <!-- Sin nada -->
-                        <div id="present" class="flex flex-col justify-center items-center">
-                          <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                              <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                              <path d="M7 9l5 -5l5 5" />
-                              <path d="M12 4l0 12" />
-                            </svg>
-                          </div>
-                          <label>Arrastrar aquí su archivos</label>
-                          <p>o</p>
-                          <label id="inputLabel" class="bg-blue-300 border rounded-lg p-4 hover:bg-blue-500 transition ease-out delay-100">Seleccione sus archivos manualmente</label>
-                          <input id="inputFile" type="file" class="hidden">
-                        </div>
-          
-                        <div id="upload" class="flex flex-col justify-center items-center hidden">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-upload" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
-                            <path d="M9 15l3 -3l3 3" />
-                            <path d="M12 12l0 9" />
-                          </svg>
-                          <label>Deje caer el archivo aquí</label>
-                        </div>
-                      </div>
-          
-                      <div id="boxImgs" class="bg-gray-500 border rounded col-span-6 mt-0 ml-4 mr-4 p-2 flex flex-row flex-wrap gap-2 hidden">
-          
-                      </div>
+                <div id="modalBase" class="relative transform overflow-hidden rounded bg-white text-left shadow transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                    
+                    <div class="bg-white px-4 pb-4 pt-5 shadow flex flex-row">
 
+                        <section class="m-4 px-6 border border-2 border-gray-400 border-dashed w-full rounded-lg shadow-inner shadow  flex flex-col justify-center items-center hover:bg-neutral-700 hover:border-neutral-100 text-indigo-600 hover:text-white transition-all">
 
+                            <span class="font-bold text-center pb-2">Arrastre sus archivos aquí ó</span>
+                            <button id="btnFiles" class="px-4 py-2 bg-blue-500 text-white border border-blue-700 rounded shadow">Ingrese manualmente</button>
 
-                      <div class="relative m-2 col-span-6 sm:col-span-3">
-                        <div class="absolute p-3 pointer-events-none">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="absolute icon icon-tabler icon-tabler-box-seam" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9l8 -4.5" />
-                            <path d="M12 12l8 -4.5" />
-                            <path d="M8.2 9.8l7.6 -4.6" />
-                            <path d="M12 12v9" />
-                            <path d="M12 12l-8 -4.5" />
-                          </svg>
-                        </div>
-                        <input type="text" name="name" placeholder="Nombre del producto" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-lg focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
-                      </div>
-          
+                        </section>
 
-                      <div class="relative m-2 col-span-6 sm:col-span-3">
-                        <div class="absolute p-3 pointer-events-none">
-                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-gray-500">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        <form id="formProduct" class="p-4" action="/product/add" method="POST">
+                            <label class="text-left text-lg text-gray-700 mt-2">Nombre del producto</label>
+                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="name" placeholder="Por ejemplo: Pesa 20kg">
 
-                        </div>
-                        <input type="text" name="price" placeholder="Precio Unitario" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-lg focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
-                        <div class="errorMessage hidden text-red-500 font-semibold">El precio deben ser solo numeros</div>
-                      </div>
-          
+                            <label class="text-left text-lg text-gray-700 mt-4">Precio de venta</label>
+                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="price" placeholder="Ejemplo: $20">
 
-                      <div class="relative m-2 col-span-6 sm:col-span-3">
-                        <div class="absolute p-3 pointer-events-none">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-barcode" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M4 7v-1a2 2 0 0 1 2 -2h2" />
-                            <path d="M4 17v1a2 2 0 0 0 2 2h2" />
-                            <path d="M16 4h2a2 2 0 0 1 2 2v1" />
-                            <path d="M16 20h2a2 2 0 0 0 2 -2v-1" />
-                            <path d="M5 11h1v2h-1z" />
-                            <path d="M10 11l0 2" />
-                            <path d="M14 11h1v2h-1z" />
-                            <path d="M19 11l0 2" />
-                          </svg>
-                        </div>
-                        <input type="text" name="code" placeholder="Codigo" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-lg focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
-                      </div>
-          
+                            <label class="text-left text-lg text-gray-700 mt-4">Código Identificador</label>
+                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="code" placeholder="Ingrese el código del producto">
 
-                      <div class=" m-2 col-span-6 sm:col-span-3">
-                        <select class="bg-gray-100 p-4 w-full rounded-lg text-gray-700">
-                          <option value="0">Seleccione una opcion...</option>
-                        </select>
-                      </div>
+                            <label class="text-left text-lg text-gray-700 mt-4">Descripción</label>
+                            <textarea class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" name="description" placeholder="Ingrese una Descripción del producto"></textarea>
 
+                            <input id="files" type="file" name="files" class="hidden">
 
-                      <div class="relative m-2 col-span-6 sm:col-span-6">
-                        <div class="absolute p-3 pointer-events-none">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-gray-500">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-                          </svg>
-                        </div>
-                        <input type="text" name="description" placeholder="Descripción de producto" class="appearance-none w-full bg-gray-100 pl-14 p-4 text-gray-700 rounded-lg focus:ring-2 leading-tight focus:outline-none focus:shadow-outline">
-                      </div>
+                            <section class="flex justify-center">
+                                <button id="btnCloseModalProduct" class="border border-gray-400 bg-gray-200 px-4 py-2 rounded shadow mx-2 hover:bg-gray-400 hover:border-gray-600 hover:transition-all hover:text-white">Cerrar</button>
 
-                    </form>
+                                <button id="btnSaveProduct" class="border border-lime-500 bg-lime-400 px-4 py-2 hover:text-white rounded shadow  hover:bg-lime-600 hover:border-lime-700 mx-2 hover:transition-all">Gurdar</button>
+                            </section>
+                        </form>
+
+                        <section class="hidden" id="boxPreviewImgs">
+                            
+                        </section>
+
+                    </div>
                 </div>
-
-                <!-- 
-                  BOTONERA DEL MODAL 
-                -->
             </div>
-                <div class="bg-gray-100 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                    <button type="button" class="inline-flex w-full justify-center rounded-lg bg-lime-500 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-lime-700 sm:ml-3 sm:w-auto">Guardar</button>
-
-                    <button type="button" class="mt-3 inline-flex w-full justify-center rounded-lg bg-white px-4 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto sm:ml-3">Cancel</button>
-
-                    <button id="uploadImgs" class="mt-3 inline-flex w-full justify-center rounded-lg bg-white px-4 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto sm:ml-3">Imgs Test</button>
-                </div>
-              </div>
-          </div>
         </div>
     </div>
-  </div>
-
 
   
+  <script src="js/utils.js"></script>
   <script src="js/home.js"></script>
 </body>
 </html>
