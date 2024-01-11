@@ -1,3 +1,6 @@
+require("dotenv").config();
+const { MASTER_ADMIN, MASTER_PASSWORD, PORT } = process.env;
+
 // Login principal
 const login = (req, res) => {
 	res.render("login");
