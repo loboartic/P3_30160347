@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Inicio</title>
-  <link rel="stylesheet" href="css/tailwind.css">
-  <link rel="stylesheet" type="text/css" href="css/jquery.growl.css">
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/jquery.growl.js"></script>
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css">
+  <script type="text/javascript" src="/js/jquery.js"></script>
+  <script type="text/javascript" src="/js/jquery.growl.js"></script>
 </head>
 <body>
   
-    <header class="w-full bg-gray-800 shadow-md h-16 sm:flex-row flex justify-center items-center justify-evenly ">
+    <header class="w-full bg-slate-950 shadow-md h-16 sm:flex-row flex justify-center items-center justify-evenly ">
       
       <div>
         <button class="col-span-2 bg-neutral-950 rounded-full p-1">
@@ -23,8 +23,8 @@
       </div>
 
       <nav class="flex justify-evenly w-1/6 items-center justify-center">
-        <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="products">Productos</a>
-        <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="categorys">Categorias</a>
+        <a href="/home" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="products">Productos</a>
+        <a href="/category/" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="categorys">Categorias</a>
         <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="highlightLink">Destacados</a>
       </nav>
 
@@ -128,6 +128,11 @@
                             <label class="text-left text-lg text-gray-700 mt-4">Código Identificador</label>
                             <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="code" placeholder="Ingrese el código del producto">
 
+                            <label class="text-left text-lg text-gray-700 mt-4 ">Categoria</label>
+                            <select id="selectCategories" name="categoryId" class="border border-gray-300 rounded shadow bg-gray-100 p-3 w-full mb-4 text-gray-500">
+                              <option value="">Selecione una categoria</option>
+                            </select>
+
                             <label class="text-left text-lg text-gray-700 mt-4">Descripción</label>
                             <textarea class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" name="description" placeholder="Ingrese una Descripción del producto"></textarea>
 
@@ -136,7 +141,7 @@
                             <section class="flex justify-center">
                                 <button id="btnCloseModalProduct" class="border border-gray-400 bg-gray-200 px-4 py-2 rounded shadow mx-2 hover:bg-gray-400 hover:border-gray-600 hover:transition-all hover:text-white">Cerrar</button>
 
-                                <button id="btnSaveProduct" class="border border-lime-500 bg-lime-400 px-4 py-2 hover:text-white rounded shadow  hover:bg-lime-600 hover:border-lime-700 mx-2 hover:transition-all">Gurdar</button>
+                                <button id="btnSaveProduct" class="border border-emerald-600 bg-emerald-500 px-4 py-2 text-white rounded shadow hover:bg-emerald-700 hover:border-emerald-800 mx-2 hover:transition-all">Gurdar</button>
                             </section>
                         </form>
 

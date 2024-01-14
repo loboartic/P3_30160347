@@ -2,7 +2,7 @@ const db = require("../database/models/index.js");
 const { GetAllProducts } = require("../helpers/getAllProducts");
 
 const addProduct = async (req, res) => {
-    const { name, price, code, description } = req.body;
+    const { name, price, code, categoryId, description } = req.body;
 
     try {
         // Crear objetos con los valores
@@ -10,6 +10,7 @@ const addProduct = async (req, res) => {
             name,
             price,
             code,
+            categoryId,
             description,
         };
 
@@ -56,33 +57,33 @@ const deleteProduct = async (req, res) => {
 
         return res.json({
             error: false,
-            msg: 'El producto fue eliminado exitosamente'
-        })
+            msg: "El producto fue eliminado exitosamente",
+        });
     } else {
-        console.log('El identificador esta vacio')
+        console.log("El identificador esta vacio");
     }
 };
 
 const viewProduct = async (req, res) => {
     const { id } = req.params;
 
-    console.log(id)
+    console.log(id);
 
     product = await db.product.findOne({
         where: {
             id: id,
-        }
-    })
+        },
+    });
 
-    console.log(product)
+    console.log(product);
 
-    res.render('viewProduct', {
-        product
-    })
-}
+    res.render("viewProduct", {
+        product,
+    });
+};
 
 module.exports = {
     addProduct,
     deleteProduct,
-    viewProduct
-}
+    viewProduct,
+};

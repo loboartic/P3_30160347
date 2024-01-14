@@ -15,6 +15,7 @@ const landing = require('./routes/landing.js')
 const login = require("./routes/login.js");
 const home = require("./routes/home.js");
 const product = require("./routes/product.js");
+const category = require("./routes/category.js");
 
 
 const { GetAllProducts } = require("./helpers/getAllProducts");
@@ -47,6 +48,7 @@ app.use('/', landing)
 app.use("/login", login);
 app.use("/home", home);
 app.use("/product/", product)
+app.use("/category/", category)
 
 // Congiguración de multer
 const storage = multer.diskStorage({
@@ -65,7 +67,7 @@ console.log(upload);
 
 
 // Añadir una categoria
-app.post("/add/category", async (req, res) => {
+/*app.post("/add/category", async (req, res) => {
     // Obtener la data de la petic
     const data = req.body;
 
@@ -81,7 +83,7 @@ app.post("/add/category", async (req, res) => {
             name: category.name,
         },
     });
-});
+});*/
 
 app.post("/upload-image", upload.array("imagen"), async (req, res) => {
     const imageUrl = req.file;

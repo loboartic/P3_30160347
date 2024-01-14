@@ -1,6 +1,8 @@
+const Category = require("./category.js");
+
 module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define(
-        'product',
+        "product",
         {
             id: {
                 type: DataTypes.INTEGER,
@@ -18,12 +20,12 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         {
-            paranoid: true,
-            freezeTableName: true,
+            paranoid: false,
+            freezeTableName: false,
         },
     );
-
-    Product.associate = (models) => {};
-
+    Product.associate = (models) => {
+        Product.belongsTo(models.category, { foreignKey: "categoryId" });
+    };
     return Product;
 };

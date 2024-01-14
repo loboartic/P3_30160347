@@ -1,14 +1,13 @@
-const btnOpenModalProduct = document.querySelector("#btnCreateProduct");
-const btnCloseModalProduct = document.querySelector("#btnCloseModalProduct");
+const btnOpenModalCategories = document.querySelector("#btnCreateCategories");
+const btnCloseModalCategories = document.querySelector("#btnCloseModalCategories");
 const btnSaveProduct = document.querySelector("#btnSaveProduct");
 const deleteProduct = document.querySelectorAll("#deleteProduct");
-const viewProduct = document.querySelectorAll("#viewProduct");
-const selectCategories = document.querySelector("#selectCategories");
+const viewProduct = document.querySelectorAll('#viewProduct');
 
 /**
- *
+ * 
  * Funciones
- *
+ * 
  * */
 async function handlerDeleteProduct(event) {
     // Funcíon que eliminar un producto
@@ -23,20 +22,20 @@ async function handlerDeleteProduct(event) {
     console.log(`El producto a eliminar tiene el ID: ${productToDelete}`);
 
     let value = {
-        id: productToDelete,
-    };
+        'id': productToDelete
+    }
 
     // Envio del producto a eliminar
-    let process = await fetch("/product/delete", {
-        method: "POST",
+    let process = await fetch('/product/delete', {
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(value),
-    });
+    })
 
     // Procesamos la respuesta
-    let resultado = await process.json();
+    let resultado = await process.json()
 
     console.log(resultado);
 
@@ -48,18 +47,19 @@ async function handlerDeleteProduct(event) {
         event.target.parentElement.parentElement.parentElement.remove();
 
         $.growl.notice({
-            title: "Notificación",
-            message: resultado.msg,
+            title: 'Notificación',
+            message: resultado.msg
         });
     } else {
         $.growl.error({
-            title: "Error",
-            message: resultado.msg,
+            title: 'Error',
+            message: resultado.msg
         });
     }
+
 }
 
-async function handlerViewProduct(event) {
+async function handlerViewProduct(event){
     event.preventDefault();
 
     let productToView =
@@ -69,7 +69,7 @@ async function handlerViewProduct(event) {
 
     console.log(productToView);
 
-    window.location.href = `/product/${productToView}`;
+    window.location.href = `/product/${productToView}`
 }
 
 /**
@@ -77,7 +77,7 @@ async function handlerViewProduct(event) {
  *   Modal Handlers
  *
  * */
-btnOpenModalProduct.addEventListener("click", (event) => {
+btnOpenModalCategories.addEventListener("click", (event) => {
     event.preventDefault();
 
     const backgroundModal = document.querySelector("#backgroundModal");
@@ -86,7 +86,7 @@ btnOpenModalProduct.addEventListener("click", (event) => {
     console.log("Ha aparecido el modal");
 });
 
-btnCloseModalProduct.addEventListener("click", () => {
+btnCloseModalCategories.addEventListener("click", () => {
     event.preventDefault();
 
     const backgroundModal = document.querySelector("#backgroundModal");
@@ -103,7 +103,7 @@ btnSaveProduct.addEventListener("click", async (event) => {
     event.preventDefault();
 
     // Formulario
-    const form = document.querySelector("#formProduct");
+    const form = document.querySelector("#formCategories");
 
     // Octención de los datos del formulario de productos
     const valuesForm = getFormValues(form);
@@ -120,36 +120,6 @@ deleteProduct.forEach((boton) => {
     boton.addEventListener("click", handlerDeleteProduct);
 });
 
-viewProduct.forEach((boton) => {
+viewProduct.forEach(boton => {
     boton.addEventListener("click", handlerViewProduct);
-});
-
-selectCategories.addEventListener("click", async (event) => {
-    event.preventDefault();
-
-    const sendValues = await fetch("/category/get-all-categories", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-    const data = await sendValues.json();
-    console.log(data);
-
-    let nodo = document.querySelector("#selectCategories");
-    await createOptions(data.data, nodo);
-});
-
-function createOptions(data, nodo) {
-    console.log("Limpiando Nodos...");
-    while (nodo.firstChild) {
-        nodo.removeChild(nodo.firstChild);
-    }
-    console.log("Nodos Limpiados");
-    for (value of data) {
-        const option = document.createElement("OPTION");
-        option.value = value.id;
-        option.textContent = value.name;
-        nodo.appendChild(option);
-    }
-}
+})

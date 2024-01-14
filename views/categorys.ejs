@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio</title>
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.growl.css">
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.growl.js"></script>
+</head>
+<body>
+  
+<header class="w-full bg-slate-950 shadow-md h-16 sm:flex-row flex justify-center items-center justify-evenly ">
+      
+      <div>
+        <button class="col-span-2 bg-neutral-950 rounded-full p-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fafafa" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+          <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="flex justify-evenly w-1/6 items-center justify-center">
+        <a href="/home" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="products">Productos</a>
+        <a href="/category/" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="categorys">Categorias</a>
+        <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="highlightLink">Destacados</a>
+      </nav>
+
+       <div>
+        <button class="col-span-2 rounded p-1 my-1">
+          <!-- Icono de salida -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="30" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+            <path d="M9 12h12l-3 -3" />
+            <path d="M18 15l3 -3" />
+          </svg>
+        </button>
+       </div>
+    </header>
+
+    <section id="Categorias" class="h-[100vh] w-[100vw] bg-gray-50" data-origin="categorias">
+      <div class="w-full bg-neutral-50">
+        <div class="grid grid-cols-12 items-center border shadow">
+
+
+          <button id="btnCreateCategories" class="justify-center rounded m-2 bg-white px-4 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:w-auto sm:ml-3 col-span-12 sm:col-span-2">Crear Categoria</button>
+
+
+          <div class="relative col-span-12 m-2 sm:col-span-10 sm:mr-4 ">
+            <div class="absolute pointer-events-none pt-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class=" absolute icon icon-tabler icon-tabler-search" width="44" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                <path d="M21 21l-6 -6" />
+              </svg>
+            </div>
+            <input type="text" placeholder="Buscar producto" class="pl-10 bg-gray-100 shadow-inner border border-gray-300 rounded p-3 outline-none hover:ring-2 w-full">
+          </div>
+        
+        </div>
+      </div>
+
+      <!-- 
+
+        CAJA DE TARJETAS 
+
+      -->  
+    </section>
+
+
+    <div id="backgroundModal" class="fixed inset-0 bg-neutral-800 bg-opacity-75 bg-backdrop backdrop-filter backdrop-blur-sm transition-opacity transition-all hidden">
+
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            
+            <div class="flex justify-center items-center">
+
+                <div id="modalBase" class="relative transform overflow-hidden rounded bg-white text-left shadow transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                    
+                    <div class="bg-white px-4 pb-4 pt-5 shadow flex flex-row">
+                        <form id="formCategories" class="p-4" action="/category/add" method="POST">
+                            <label class="text-left text-lg text-gray-700 mt-2">Nombre de la categoria</label>
+                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="name" placeholder="Por ejemplo: Fitness, Equipo deportivo, Ropa deportiva">
+
+                            <section class="flex justify-center">
+                                <button id="btnCloseModalProduct" class="border border-gray-400 bg-gray-200 px-4 py-2 rounded shadow mx-2 hover:bg-gray-400 hover:border-gray-600 hover:transition-all hover:text-white">Cerrar</button>
+
+                                <button id="btnSaveProduct" class="border border-emerald-600 bg-emerald-500 px-4 py-2 text-white rounded shadow hover:bg-emerald-700 hover:border-emerald-800 mx-2 hover:transition-all">Gurdar</button>
+                            </section>
+                        </form>
+
+                        <section class="hidden" id="boxPreviewImgs">
+                            
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+  <script src="/js/utils.js"></script>
+  <script src="/js/categories.js"></script>
+</body>
+</html>
