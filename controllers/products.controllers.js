@@ -1,8 +1,11 @@
-const db = require("../database/models/index.js");
-const { GetAllProducts } = require("../helpers/getAllProducts");
+const db = require('../database/models/index.js');
+const { GetAllProducts } = require('../helpers/getAllProducts');
 
 const addProduct = async (req, res) => {
+    // Objetos del formulario
     const { name, price, code, categoryId, description } = req.body;
+    // Archivos del formulario
+    const files = req.files;
 
     try {
         // Crear objetos con los valores
@@ -14,15 +17,27 @@ const addProduct = async (req, res) => {
             description,
         };
 
-        if (Object.values(values).includes("")) {
+        if (Object.values(values).includes('')) {
             res.json({
                 success: false,
-                message: "Hubo un error con la información suministrada",
+                message: 'Hubo un error con la información suministrada',
             });
             return;
         }
 
         let product = await db.product.create(values);
+
+        for (const file of files) {
+            let values = {
+                destination: file.destination,
+                path: file.path,
+                originalName: file.originalname,
+                filename: file.filename,
+                mimetype: file.mimetype,
+                productId: product.id,
+            };
+            await db.image.create(values);
+        }
 
         if (product) {
             // Respuesta el endpoint
@@ -30,17 +45,18 @@ const addProduct = async (req, res) => {
 
             // TODO:
             // Enviar una notificación al cliente luego de crear un producto
-            res.redirect("/home");
+            res.redirect('/home');
         } else {
-            res.json({
-                success: false,
-                message: "Ocurrio un error al guardar la información",
+            return res.json({
+                error: true,
+                msg: 'Ocurrio un error al guardar la información',
             });
         }
     } catch (error) {
-        res.json({
-            success: false,
-            message: "Ocurrio un error al guardar la información",
+        console.log(error);
+        return res.json({
+            error: true,
+            msg: 'Ocurrio un error al guardar la información',
         });
     }
 };
@@ -48,24 +64,31 @@ const addProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
     let { id } = req.body;
 
-    if (id.trim() != "") {
-        let product = await db.product.destroy({
-            where: {
-                id: parseInt(id),
-            },
-        });
+    try {
+        if (id.trim() != '') {
+            let product = await db.product.destroy({
+                where: {
+                    id: parseInt(id),
+                },
+            });
 
+            return res.json({
+                error: false,
+                msg: 'El producto fue eliminado exitosamente',
+            });
+        } else {
+            console.log('El identificador esta vacio');
+        }
+    } catch (error) {
         return res.json({
-            error: false,
-            msg: "El producto fue eliminado exitosamente",
+            error: true,
+            msg: 'Ocurrio un error',
         });
-    } else {
-        console.log("El identificador esta vacio");
     }
 };
 
 const viewProduct = async (req, res) => {
-    const { id } = req.params;
+    /*    const { id } = req.params;
 
     console.log(id);
 
@@ -75,10 +98,25 @@ const viewProduct = async (req, res) => {
         },
     });
 
-    console.log(product);
-
-    res.render("viewProduct", {
+    res.render('viewProduct', {
         product,
+    });*/
+
+    const { id } = req.params;
+    // Obtener todos los registros de la base de datos
+    let product = await db.product.findOne({
+        where: {
+            id,
+        },
+        include: [db.image, db.category],
+    });
+
+    const productJson = product.toJSON();
+    console.log('-----MOSTRANDO EL PRODUCTO ------');
+    console.log(productJson);
+
+    res.render('viewProduct', {
+        product: productJson,
     });
 };
 

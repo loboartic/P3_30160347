@@ -45,14 +45,16 @@ Object.keys(db).forEach((modelName) => {
         console.log(`Associating '${modelName}'...`);
         db[modelName].associate(db);
         console.log(`Association for '${modelName}' complete.`);
-
     }
 });
-
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-sequelize.sync();
+// Verificar entorno de ejecución
+process.env.NODE_ENV === 'development'
+    ? sequelize.sync({ force: true })
+    : sequelize.sync();
 
+// Exportar el modulo
 module.exports = db;

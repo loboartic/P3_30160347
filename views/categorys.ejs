@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Inicio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/tailwind.css">
   <link rel="stylesheet" type="text/css" href="css/jquery.growl.css">
   <script type="text/javascript" src="js/jquery.js"></script>
@@ -67,7 +68,18 @@
 
         CAJA DE TARJETAS 
 
-      -->  
+      --> 
+      <div class="flex flex-wrap gap-4 mx-6 my-6 p-8 border rounded shadow max-h-2xl text-center">
+        <% if (categorys.length > 0) { %>
+          <% for (const category of categorys) { %>
+            <%- include('templates/cardCategory', { category: category }); %>
+          <% } %>
+        <% } else { %>
+          <p class="text-gray-900 text-center font-bold">No hay categorias <span class="px-4 py-2 border text-semibold m-2 rounded bg-white">Crear Categoria</span></p>
+        <% } %>
+
+        
+      </div>
     </section>
 
 

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Inicio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/tailwind.css">
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
@@ -18,7 +19,7 @@
   <div class="flex items-center justify-center mt-16">
     <!-- Sección de Imagen del Producto -->
     <div class="mr-8">
-      <img src="tu_imagen.jpg" alt="Imagen del Producto" class="w-48 h-48 object-cover rounded shadow-lg">
+      <img src="/uploads/<%= product.images[0].filename%>" alt="Imagen del Producto" class="w-48 h-48 object-cover rounded shadow border border-neutral-400" loading="lazy">
       <div class="mt-4">
         <!-- Botones de Eliminación y Edición -->
         <button class="bg-red-500 text-white py-2 px-4 rounded-full mr-2">Eliminar</button>

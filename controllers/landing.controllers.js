@@ -1,7 +1,7 @@
 const landing = async (req, res) => {
-    res.render("index");
+    res.render('index');
 };
 
 module.exports = {
-    landing
-}
+    landing,
+};

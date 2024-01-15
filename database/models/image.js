@@ -7,20 +7,32 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
                 autoIncrement: true,
             },
-            url: {
+            destination: {
                 type: DataTypes.STRING,
             },
-            highlight: {
+            path: {
+                type: DataTypes.STRING,
+            },
+            originalName: {
+                type: DataTypes.STRING,
+            }, 
+            filename: {
+                type: DataTypes.STRING,
+            },
+            mimetype: {
                 type: DataTypes.STRING,
             },
         },
         {
-            paranoid: true,
+            // paranoid desactivado para evitar tener categorias no borradas en la base de datos
+            paranoid: false,
             freezeTableName: true,
         },
     );
 
-    Image.associate = (models) => {};
+    Image.associate = (models) => {
+        Image.belongsTo(models.product, { foreignKey: 'productId' });
+    };
 
     return Image;
 };

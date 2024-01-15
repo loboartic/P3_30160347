@@ -1,13 +1,12 @@
 const { GetAllProducts } = require("../helpers/getAllProducts");
 
-
+// Controlador para HOME
 const home = async (req, res) => {
-    
-    products = await GetAllProducts()
+    products = await GetAllProducts();
 
-    res.render("home", { products });
+    return res.render("home", { products });
 };
 
 module.exports = {
-    home
-}
+    home,
+};

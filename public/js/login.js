@@ -3,7 +3,7 @@ let inputPassword = document.querySelector('input[name="password"]');
 let btnLogin = document.querySelector('#btnLogin');
 let formulario = document.querySelector('form');
 let passwordView = document.querySelector('#lock');
-console.log(passwordView)
+console.log(passwordView);
 
 campos = {
 	mail: '',
@@ -98,9 +98,9 @@ formulario.addEventListener('submit', async (event) => {
 inputMail.addEventListener('input', validarCampos);
 inputPassword.addEventListener('input', validarCampos);
 passwordView.addEventListener('click', (event) => {
-	event.preventDefault()
+	event.preventDefault();
 	// tomamos el input para hacer el cambio de vicisibilidad
 	let input = document.querySelector('input[name="password"]');
-	console.log(input)
+	console.log(input);
 	input.setAttribute('type', 'text');
-})
+});

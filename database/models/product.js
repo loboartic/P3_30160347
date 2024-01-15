@@ -1,8 +1,8 @@
-const Category = require("./category.js");
+const Category = require('./category.js');
 
 module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define(
-        "product",
+        'product',
         {
             id: {
                 type: DataTypes.INTEGER,
@@ -20,12 +20,14 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         {
+            // paranoid desactivado para evitar tener categorias no borradas en la base de datos
             paranoid: false,
-            freezeTableName: false,
+            freezeTableName: true,
         },
     );
     Product.associate = (models) => {
-        Product.belongsTo(models.category, { foreignKey: "categoryId" });
+        Product.belongsTo(models.category, { foreignKey: 'categoryId' }),
+        Product.hasMany(models.image)
     };
     return Product;
 };

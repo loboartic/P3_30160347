@@ -8,11 +8,10 @@ const login = (req, res) => {
 
 // Autentificación del usuario
 const loginAuthenticate = (req, res) => {
-	const data = req.body;
+	const { mail, password } = req.body;
 
-	if (data.mail == MASTER_ADMIN && data.password == MASTER_PASSWORD) {
-		res.redirect("/home");
-		return;
+	if (mail === MASTER_ADMIN && password === MASTER_PASSWORD) {
+		return res.redirect("/home");
 	}
 
 	res.json({

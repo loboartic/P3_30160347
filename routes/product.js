@@ -1,11 +1,20 @@
-const express = require("express");
-const router = express.Router();
+const express = require('express');
+const routerProducts = express.Router();
+const { upload } = require('../controllers/images.controllers.js');
 
-const { addProduct, deleteProduct, viewProduct } = require("../controllers/products.controllers.js");
+const {
+    addProduct,
+    deleteProduct,
+    viewProduct,
+} = require('../controllers/products.controllers.js');
 
 // Rutas
-router.post('/add', addProduct)
-router.post('/delete', deleteProduct)
-router.get('/:id', viewProduct)
+// Añadir productos
+routerProducts.post('/add', upload.array('files'), addProduct);
+// Borrar productos
+routerProducts.post('/delete', deleteProduct);
+// Ver un producto específico
+routerProducts.get('/:id', viewProduct);
 
-module.exports = router;
+
+module.exports = routerProducts;
