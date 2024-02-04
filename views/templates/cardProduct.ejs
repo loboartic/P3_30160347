@@ -1,11 +1,37 @@
-<div class="border rounded-md bg-neutral-50 shadow-md grid grid-cols-12 hover:-translate-y-3 transition ease-in delay-150" data-id="<%= product.id %>">
-  <div class="flex flex-col p-4 col-span-12">
-    <p class="text-gray-950 text-3xl pb-2 font-bold"><%= product.name %></p>
-    <p class="text-gray-600 font-bold rounded border p-2 text-lg">$<%= product.price %></p>
-    <p class="text-sm text-gray-700">Código: <span class="text-orange-700 font-bold"><%=product.code %></span></p>
-    <div class="flex flex-col">
-      <button id="viewProduct" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded border border-blue-600 shadow">Ver producto</button>
-      <button id="deleteProduct" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-2 rounded border border-red-700 shadow">Eliminar</button>
+<div class="bg-white rounded-md shadow w-48 text-center border border-gray-300" data-id="<%= product.id%>">
+    <!-- Imagen del producto -->
+
+    <% if (product.images.length > 0) {%>
+        <img src="/uploads/<%= product.images[0].filename%>" alt="Product Image" class="mb-2 rounded-md w-full h-25 object-cover">
+    <% } else { %>
+        <img src="/img/default-image.png" alt="Product Image Default" class="mb-2 rounded-md w-full h-25 object-cover">
+    <% } %>
+
+    <!-- Nombre del producto -->
+    <h2 class="text-md font-semibold mb-2 mt-2"><%=product.name%></h2>
+
+    <!-- Precio y Stock -->
+    <div class="mb-2 text-sm mb-2 mt-2">
+        <p class="text-gray-600">Precio: <%=product.price%>$</p>
+        <!-- <p class="text-gray-600">Stock: 10 unidades</p> -->
     </div>
-  </div>
+
+    <!-- Botón con Tooltip -->
+    <div class="relative inline-block mb-2">
+        <button id="productOptions" class="bg-sky-500 text-white py-2 px-4 rounded ">
+            Opciones
+        </button>
+        <div class="absolute hidden bg-white p-2 rounded-md shadow-md mt-2 text-left border border-gray-300">
+            <!-- Opciones de la Tooltip -->
+            <button id="viewProduct" class="flex items-center space-x-2 hover:bg-blue-700">
+                Ver
+            </button>
+            <button id="editProduct" class="flex items-center space-x-2">
+                Editar
+            </button>
+            <button id="deleteProduct" class="flex items-center space-x-2">
+                Eliminar
+            </button>
+        </div>
+    </div>
 </div>

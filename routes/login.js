@@ -7,8 +7,9 @@ const {
     loginAuthenticate,
 } = require('../controllers/login.controllers.js');
 
+// Login
 router.get('/', login);
-
+// Login autentificar
 router.post('/', loginAuthenticate);
 
 module.exports = router;

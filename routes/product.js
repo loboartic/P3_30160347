@@ -1,6 +1,7 @@
 const express = require('express');
 const routerProducts = express.Router();
 const { upload } = require('../controllers/images.controllers.js');
+const { verifySession } = require('../helpers/staySession.js')
 
 const {
     addProduct,
@@ -14,7 +15,7 @@ routerProducts.post('/add', upload.array('files'), addProduct);
 // Borrar productos
 routerProducts.post('/delete', deleteProduct);
 // Ver un producto específico
-routerProducts.get('/:id', viewProduct);
+routerProducts.get('/:id',verifySession, viewProduct);
 
 
 module.exports = routerProducts;

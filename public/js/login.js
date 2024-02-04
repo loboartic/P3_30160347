@@ -3,7 +3,6 @@ let inputPassword = document.querySelector('input[name="password"]');
 let btnLogin = document.querySelector('#btnLogin');
 let formulario = document.querySelector('form');
 let passwordView = document.querySelector('#lock');
-console.log(passwordView);
 
 campos = {
 	mail: '',
@@ -64,6 +63,7 @@ function getFormValues(formulario) {
 
 formulario.addEventListener('submit', async (event) => {
 	event.preventDefault();
+
 	console.log(Object.values(campos).includes(''));
 
 	// Validar campos del formulario
@@ -76,6 +76,7 @@ formulario.addEventListener('submit', async (event) => {
 	// Tomar datos del formulario
 	let data = await getFormValues(formulario);
 
+	console.log("Monstrando valores en consola")
 	console.log(data);
 
 	// Enviar datos al endpoint
@@ -87,7 +88,13 @@ formulario.addEventListener('submit', async (event) => {
 
 	newData = await data;
 	console.log(newData);
-	window.location.href = newData.url;
+	if (newData.redirected) {
+		window.location.href = newData.url;
+	} else {
+		console.log("No es valido")
+		toastr.error(newData.message, 'Error');
+		return
+	}
 
 	/*if (newData.success) {
 		// Enviar formulario
@@ -99,8 +106,8 @@ inputMail.addEventListener('input', validarCampos);
 inputPassword.addEventListener('input', validarCampos);
 passwordView.addEventListener('click', (event) => {
 	event.preventDefault();
+	validarCampos()
 	// tomamos el input para hacer el cambio de vicisibilidad
 	let input = document.querySelector('input[name="password"]');
-	console.log(input);
 	input.setAttribute('type', 'text');
 });

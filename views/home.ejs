@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <title>Inicio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/toastr.min.css">
   <link rel="stylesheet" href="/css/tailwind.css">
-  <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css">
-  <script type="text/javascript" src="/js/jquery.js"></script>
-  <script type="text/javascript" src="/js/jquery.growl.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 <body>
   
@@ -42,7 +41,7 @@
        </div>
     </header>
 
-    <section id="Productos" class="h-[100vh] w-[100vw] bg-gray-50" data-origin="productos">
+    <section id="Productos" class="h-[100vh] sm:h-[100vh] w-[100vw] bg-zinc-200" data-origin="productos">
       <div class="w-full bg-neutral-50">
         <div class="grid grid-cols-12 items-center border shadow">
 
@@ -69,7 +68,7 @@
         CAJA DE TARJETAS 
 
       -->  
-      <div class="flex flex-wrap gap-4 mx-6 my-6 p-8 border rounded shadow max-h-2xl text-center">
+      <div class="flex flex-wrap gap-4 mx-6 my-6 p-8 border border-gray-300 bg-white rounded shadow max-h-2xl text-center">
         <% if (products.length > 0) { %>
           <% for (const product of products) { %>
             <%- include('templates/cardProduct', { product: product }); %>
@@ -82,26 +81,6 @@
       </div>
     </section>
 
-    <section id="Categorias" class="h-[100vh] w-[100vw] p-3 hidden" data-origin="categorias">
-      <div class="grid grid-cols-12">
-        <button id="btnCategoris" class="col-span-2 bg-neutral-100 border rounded p-2 m-4 hover:text-white hover:bg-neutral-500 w-full">Crear Categoria</button>
-        <div class="relative m-4 col-span-10">
-          <div class="absolute pointer-events-none pt-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class=" absolute icon icon-tabler icon-tabler-search" width="44" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-              <path d="M21 21l-6 -6" />
-            </svg>
-          </div>
-          <input type="text" placeholder="Buscar producto" class="pl-10 bg-gray-200 border rounded p-3 outline-none hover:ring-2 w-full">
-        </div>
-      </div>
-      <div class="grid grid-cols-12">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nisi voluptatum quia quo accusantium a, odio ex asperiores accusamus. Autem perferendis officia itaque alias assumenda quam totam iste nihil voluptatibus.
-      </div>
-    </section>
-
-
     <div id="backgroundModal" class="fixed inset-0 bg-neutral-800 bg-opacity-75 bg-backdrop backdrop-filter backdrop-blur-sm transition-opacity transition-all hidden">
 
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -110,16 +89,29 @@
 
                 <div id="modalBase" class="relative transform overflow-hidden rounded bg-white text-left shadow transition-all sm:my-8 sm:w-full sm:max-w-lg">
                     
-                    <div class="bg-white px-4 pb-4 pt-5 shadow flex flex-row">
+                    <div class="bg-white px-4 pb-4 pt-5 shadow flex flex-col">
+                        <section class="flex flex-col p-4">
+                          <section class="p-4 h-60 w-full mb-4 border border-2 border-gray-400 border-dashed w-full rounded-lg shadow-inner shadow flex flex-col justify-center items-center hover:bg-neutral-700 hover:border-neutral-100 text-indigo-600 hover:text-white transition-all" id="dropArea">
 
-                        <section class="m-4 px-6 border border-2 border-gray-400 border-dashed w-full rounded-lg shadow-inner shadow  flex flex-col justify-center items-center hover:bg-neutral-700 hover:border-neutral-100 text-indigo-600 hover:text-white transition-all" id="dropArea">
+                              <span class="font-bold text-center pb-2">Arrastre sus archivos aquí ó</span>
+                              <button id="btnFiles" class="px-4 py-2 bg-blue-500 text-white border border-blue-700 rounded shadow">Ingrese manualmente</button>
 
-                            <span class="font-bold text-center pb-2">Arrastre sus archivos aquí ó</span>
-                            <button id="btnFiles" class="px-4 py-2 bg-blue-500 text-white border border-blue-700 rounded shadow">Ingrese manualmente</button>
+                          </section>
+
+                          <section class="hidden" id="boxPreviewImgs">
+
+                            <p class="border rounded bg-zinc-100 p-2 text-amber-600 font-semibold">Se usará la primera imagen adjuntada como imagen a mostrar en miniaturas</p>
+
+                            <div class="mt-2 flex flex-row gap-4" id="imagesPreview" >
+                              
+                            </div>
+
+                          </section>
 
                         </section>
 
                         <form id="formProduct" class="p-4" enctype="multipart/form-data" action="/product/add" method="POST">
+
                             <label class="text-left text-lg text-gray-700 mt-2">Nombre del producto</label>
                             <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="name" placeholder="Por ejemplo: Pesa 20kg">
 
@@ -145,10 +137,7 @@
                                 <button id="btnSaveProduct" class="border border-emerald-600 bg-emerald-500 px-4 py-2 text-white rounded shadow hover:bg-emerald-700 hover:border-emerald-800 mx-2 hover:transition-all">Gurdar</button>
                             </section>
                         </form>
-
-                        <section class="hidden" id="boxPreviewImgs">
-                            
-                        </section>
+                      
 
                     </div>
                 </div>
@@ -157,6 +146,8 @@
     </div>
 
   
+  <script src="js/jquery.js"></script>
+  <script src="js/toastr.min.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/home.js"></script>
 </body>

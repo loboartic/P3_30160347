@@ -17,6 +17,8 @@ const addProduct = async (req, res) => {
             description,
         };
 
+        console.log(values);
+
         if (Object.values(values).includes('')) {
             res.json({
                 success: false,
@@ -27,16 +29,18 @@ const addProduct = async (req, res) => {
 
         let product = await db.product.create(values);
 
-        for (const file of files) {
-            let values = {
-                destination: file.destination,
-                path: file.path,
-                originalName: file.originalname,
-                filename: file.filename,
-                mimetype: file.mimetype,
-                productId: product.id,
-            };
-            await db.image.create(values);
+        if (files.length > 0) {
+            for (const file of files) {
+                let values = {
+                    destination: file.destination,
+                    path: file.path,
+                    originalName: file.originalname,
+                    filename: file.filename,
+                    mimetype: file.mimetype,
+                    productId: product.id,
+                };
+                await db.image.create(values);
+            }
         }
 
         if (product) {
@@ -45,7 +49,12 @@ const addProduct = async (req, res) => {
 
             // TODO:
             // Enviar una notificación al cliente luego de crear un producto
-            res.redirect('/home');
+            /*res.redirect('/home');*/
+            console.log('EL producto ha sido creado con exito');
+            return res.json({
+                error: false,
+                msg: 'El producto ha sido creado con exito',
+            });
         } else {
             return res.json({
                 error: true,

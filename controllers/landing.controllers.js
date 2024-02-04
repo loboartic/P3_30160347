@@ -1,4 +1,4 @@
-const landing = async (req, res) => {
+const landing = (req, res) => {
     res.render('index');
 };
 

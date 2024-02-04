@@ -1,25 +1,28 @@
-const db = require("../database/models/index.js");
+const db = require('../database/models/index.js');
 
 async function GetAllProducts() {
-	// Obtener todos los registros de la base de datos
-	let productsQuery = await db.product.findAll();
+	// Buscar todos los productos incluyendo la tabla de imagenes y categorias
+	let products = await db.product.findAll({
+		include: [db.image, db.category],
+	});
 
 	// Array vacio para ser enviado al controlador
-	let products = [];
+	let productsList = [];
 
 	// Iterar en cada uno de los registros para crear un objeto y agregarlo
 	// a la variable de productos
-	for (product of productsQuery) {
+	for (const product of products) {
 		let vals = {
 			id: product.id,
 			name: product.name,
 			price: product.price,
 			code: product.code,
+			images: product.images,
 		};
-		products.push(vals);
+		productsList.push(vals);
 	}
 
-	return products;
+	return productsList;
 }
 
 module.exports = { GetAllProducts };

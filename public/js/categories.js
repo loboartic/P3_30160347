@@ -2,7 +2,7 @@ const btnOpenModalCategories = document.querySelector('#btnCreateCategories');
 const btnCloseModalCategories = document.querySelector(
     '#btnCloseModalCategories',
 );
-const btnSaveProduct = document.querySelector('#btnSaveProduct');
+const btnSaveCategory = document.querySelector('#btnSaveCategory');
 const deleteProduct = document.querySelectorAll('#deleteProduct');
 const viewProduct = document.querySelectorAll('#viewProduct');
 
@@ -100,7 +100,7 @@ btnCloseModalCategories.addEventListener('click', () => {
  *  Form Products
  *
  * */
-btnSaveProduct.addEventListener('click', async (event) => {
+btnSaveCategory.addEventListener('click', async (event) => {
     event.preventDefault();
 
     // Formulario
@@ -112,6 +112,7 @@ btnSaveProduct.addEventListener('click', async (event) => {
     // Verifica que exista un campo con un valor vacio
     if (Object.values(valuesForm).includes('')) {
         console.log('Un campo tiene un valor vacio');
+        return
     }
 
     form.submit();

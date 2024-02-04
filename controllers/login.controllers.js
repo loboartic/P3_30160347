@@ -11,10 +11,15 @@ const loginAuthenticate = (req, res) => {
 	const { mail, password } = req.body;
 
 	if (mail === MASTER_ADMIN && password === MASTER_PASSWORD) {
+		req.session.usuario = {
+			mail,
+			role: 'admin'
+		}
+		console.log(req.session.usuario)
 		return res.redirect("/home");
 	}
 
-	res.json({
+	return res.json({
 		success: false,
 		message: "Correo o contraseña invalidos",
 	});
