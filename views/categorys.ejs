@@ -5,9 +5,7 @@
   <title>Inicio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/tailwind.css">
-  <link rel="stylesheet" type="text/css" href="css/jquery.growl.css">
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/jquery.growl.js"></script>
+  <link rel="stylesheet" href="/css/toastr.min.css">
 </head>
 <body>
   
@@ -91,9 +89,9 @@
                 <div id="modalBase" class="relative transform overflow-hidden rounded bg-white text-left shadow transition-all sm:my-8 sm:w-full sm:max-w-lg">
                     
                     <div class="bg-white px-4 pb-4 pt-5 shadow flex flex-row">
-                        <form id="formCategories" class="p-4" action="/category/add" method="POST">
+                        <form id="formCategories" class="p-4">
                             <label class="text-left text-lg text-gray-700 mt-2">Nombre de la categoria</label>
-                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="name" placeholder="Por ejemplo: Fitness, Equipo deportivo, Ropa deportiva">
+                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="name_category" placeholder="Por ejemplo: Fitness, Equipo deportivo, Ropa deportiva">
 
                             <section class="flex justify-center">
                                 <button id="btnCloseModalCategories" class="border border-gray-400 bg-gray-200 px-4 py-2 rounded shadow mx-2 hover:bg-gray-400 hover:border-gray-600 hover:transition-all hover:text-white">Cerrar</button>
@@ -107,7 +105,8 @@
         </div>
     </div>
 
-  
+  <script src="/js/jquery.js"></script>
+  <script src="/js/toastr.min.js"></script>
   <script src="/js/utils.js"></script>
   <script src="/js/categories.js"></script>
 </body>

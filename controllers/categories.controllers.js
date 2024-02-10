@@ -21,18 +21,33 @@ const homeCategories = async (req, res) => {
 
 // Añadir categories
 const addCategories = async (req, res) => {
-	const { name } = req.body;
+	const { name_category } = req.body;
+	console.log(req.body);
+	console.log(name_category);
 
 	try {
-		const category = await db.category.create({ name });
+		// Verificamos que no sea un campo vácio
+		if (name_category.trim() === '') {
+			return res.json({
+				error: true,
+				msg: 'Hay un campo vácio',
+			});
+		}
 
+		// Creamos una categoria
+		const category = await db.category.create({ name: name_category });
+		console.log(category)
+		// Retornamos la categoria creada
 		return res.json({
 			error: false,
-			msg: 'Categoria agregada',
+			msg: '¡Categoria agregada con exito!',
 			data: { id: category.id },
 		});
 	} catch {
-		return res.json({ error: true, msg: 'Hubo un error en la petición' });
+		return res.json({
+			error: true,
+			msg: 'Hubo algo procesar al procesar la información',
+		});
 	}
 };
 

@@ -17,8 +17,6 @@ const addProduct = async (req, res) => {
             description,
         };
 
-        console.log(values);
-
         if (Object.values(values).includes('')) {
             res.json({
                 success: false,
@@ -43,17 +41,25 @@ const addProduct = async (req, res) => {
             }
         }
 
+        // Verificamos la información del producto
         if (product) {
-            // Respuesta el endpoint
-            const products = await GetAllProducts();
 
-            // TODO:
-            // Enviar una notificación al cliente luego de crear un producto
-            /*res.redirect('/home');*/
-            console.log('EL producto ha sido creado con exito');
+            // Hacemos una busqueda del producto por su id
+            let productData = await db.product.findOne({
+                where: {
+                    id: parseInt(product.id),
+                },
+                include: [db.image, db.category],
+            });
+
+            // Convertimos el resultado en un JSON
+            const data = productData.toJSON();
+
+            // Retornamos la información al frontend
             return res.json({
                 error: false,
                 msg: 'El producto ha sido creado con exito',
+                data,
             });
         } else {
             return res.json({
@@ -65,7 +71,7 @@ const addProduct = async (req, res) => {
         console.log(error);
         return res.json({
             error: true,
-            msg: 'Ocurrio un error al guardar la información',
+            msg: 'Ocurrio un error al procesar la información',
         });
     }
 };
@@ -97,20 +103,6 @@ const deleteProduct = async (req, res) => {
 };
 
 const viewProduct = async (req, res) => {
-    /*    const { id } = req.params;
-
-    console.log(id);
-
-    product = await db.product.findOne({
-        where: {
-            id: id,
-        },
-    });
-
-    res.render('viewProduct', {
-        product,
-    });*/
-
     const { id } = req.params;
     // Obtener todos los registros de la base de datos
     let product = await db.product.findOne({

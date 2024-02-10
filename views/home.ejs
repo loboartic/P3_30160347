@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="css/toastr.min.css">
   <link rel="stylesheet" href="/css/tailwind.css">
   <link rel="stylesheet" type="text/css" href="/css/home.css">
+  <link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
 <body>
-  
     <header class="w-full bg-slate-950 shadow-md h-16 sm:flex-row flex justify-center items-center justify-evenly ">
       
       <div>
@@ -68,7 +68,7 @@
         CAJA DE TARJETAS 
 
       -->  
-      <div class="flex flex-wrap gap-4 mx-6 my-6 p-8 border border-gray-300 bg-white rounded shadow max-h-2xl text-center">
+      <div class="flex flex-wrap gap-4 mx-6 my-6 p-8 border border-gray-300 bg-white rounded shadow max-h-2xl text-center" id="productosContainer">
         <% if (products.length > 0) { %>
           <% for (const product of products) { %>
             <%- include('templates/cardProduct', { product: product }); %>
@@ -110,7 +110,7 @@
 
                         </section>
 
-                        <form id="formProduct" class="p-4" enctype="multipart/form-data" action="/product/add" method="POST">
+                        <form id="formProduct" class="p-4">
 
                             <label class="text-left text-lg text-gray-700 mt-2">Nombre del producto</label>
                             <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="name" placeholder="Por ejemplo: Pesa 20kg">

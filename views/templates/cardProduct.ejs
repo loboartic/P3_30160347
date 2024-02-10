@@ -2,9 +2,9 @@
     <!-- Imagen del producto -->
 
     <% if (product.images.length > 0) {%>
-        <img src="/uploads/<%= product.images[0].filename%>" alt="Product Image" class="mb-2 rounded-md w-full h-25 object-cover">
+        <img src="/uploads/<%= product.images[0].filename%>" alt="Product Image" class="mb-2 rounded-md w-full h-25 object-cover" loading="lazy">
     <% } else { %>
-        <img src="/img/default-image.png" alt="Product Image Default" class="mb-2 rounded-md w-full h-25 object-cover">
+        <img src="/img/default-image.png" alt="Product Image Default" class="mb-2 rounded-md w-full h-25 object-cover" loading="lazy">
     <% } %>
 
     <!-- Nombre del producto -->

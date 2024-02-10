@@ -103,19 +103,32 @@ btnCloseModalCategories.addEventListener('click', () => {
 btnSaveCategory.addEventListener('click', async (event) => {
     event.preventDefault();
 
-    // Formulario
-    const form = document.querySelector('#formCategories');
+// Formulario
+    const form = document.querySelector("#formCategories");
 
     // Octención de los datos del formulario de productos
     const valuesForm = getFormValues(form);
 
     // Verifica que exista un campo con un valor vacio
-    if (Object.values(valuesForm).includes('')) {
-        console.log('Un campo tiene un valor vacio');
-        return
+    if (Object.values(valuesForm).includes("")) {
+        console.log("Un campo tiene un valor vacio");
     }
 
-    form.submit();
+    const sendValues = await fetch('/category/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify( valuesForm ),
+    });
+
+    const data = await sendValues.json();
+
+    if (data.error === true) {
+        return toastr.error(data.msg);
+    } else {
+        return toastr.success(data.msg);
+    }
 });
 
 deleteProduct.forEach((boton) => {
