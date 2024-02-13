@@ -1,93 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Inicio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/toastr.min.css">
-  <link rel="stylesheet" href="/css/tailwind.css">
-  <link rel="stylesheet" type="text/css" href="/css/home.css">
-  <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
-<body>
-    <header class="w-full bg-slate-950 shadow-md h-16 sm:flex-row flex justify-center items-center justify-evenly ">
-      
-      <div>
-        <button class="col-span-2 bg-neutral-950 rounded-full p-1">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fafafa" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-          <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-          </svg>
-        </button>
-      </div>
+<body class="min-h-100 bg-gray-200">
 
-      <nav class="flex justify-evenly w-1/6 items-center justify-center">
-        <a href="/home" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="products">Productos</a>
-        <a href="/category/" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="categorys">Categorias</a>
-        <a href="#" class="px-3 py-2 text-white hover:bg-neutral-800 hover:rounded duration-300" id="highlightLink">Destacados</a>
-      </nav>
-
-       <div>
-        <button class="col-span-2 rounded p-1 my-1">
-          <!-- Icono de salida -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="30" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
-            <path d="M9 12h12l-3 -3" />
-            <path d="M18 15l3 -3" />
-          </svg>
-        </button>
-       </div>
-    </header>
-
-    <section id="Productos" class="h-[100vh] sm:h-[100vh] w-[100vw] bg-zinc-200" data-origin="productos">
-      <div class="w-full bg-neutral-50">
-        <div class="grid grid-cols-12 items-center border shadow">
-
-
-          <button id="btnCreateProduct" class="justify-center rounded m-2 bg-white px-4 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:w-auto sm:ml-3 col-span-12 sm:col-span-2">Crear Producto</button>
-
-
-          <div class="relative col-span-12 m-2 sm:col-span-10 sm:mr-4 ">
-            <div class="absolute pointer-events-none pt-3">
-              <svg xmlns="http://www.w3.org/2000/svg" class=" absolute icon icon-tabler icon-tabler-search" width="44" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                <path d="M21 21l-6 -6" />
-              </svg>
+    <div class="md:flex min-h-screen md:align-top">
+        <aside class="md:w-30 lg:w-30 xl:w-30 bg-cyan-600 px-5 py-10 flex flex-col items-center justify-between shadow-lg text-white font-semibold text-md">
+            <div class="flex flex-col w-full">
+                <button class="p-2 hover:outiline rounded w-full hover:bg-cyan-900" id="btnSection" name="products">Productos</button>
+                <button class="p-2 hover:outiline rounded w-full hover:bg-cyan-900" id="btnSection" name="categories">Categorias</button>
             </div>
-            <input type="text" placeholder="Buscar producto" class="pl-10 bg-gray-100 shadow-inner border border-gray-300 rounded p-3 outline-none hover:ring-2 w-full">
-          </div>
-        
-        </div>
-      </div>
+            <button class="p-2 hover:outiline rounded w-full hover:bg-cyan-900">Cerrar Sessión</button>
+        </aside>
 
-      <!-- 
+        <!-- Home -->
+        <main class="w-full px-5 py-10 bg-neutral-100 flex section" id="section-home" name="home">
+            <h2 class="text-4xl font-bold text-center">Bienvenido</h2>
+        </main>
 
-        CAJA DE TARJETAS 
+        <!-- Productos -->
+        <main class=" w-full px-5 py-10 bg-neutral-100 flex flex-col items-center section hidden" id="section-product" name="products">
+            <h2 class="text-3xl font-light text-center">Productos</h2>
+            <section class="mt-4 w-full ">
+                <!-- Contenedor de productos -->
+                <!-- <div class="border w-full border-neutral-300 rounded-md shadow bg-white flex flex-wrap flex-row justify-stretch gap-4 p-4" id="containerProducts">
+                    <div class="w-full border-b mb-2 pb-4 grid grid-cols-4 grid-auto-flow-row">
+                        <button id="createProduct" class="border border-gray-300 bg-gray-100 px-4 rounded shadow w-1/5">Crear Producto</button>
 
-      -->  
-      <div class="flex flex-wrap gap-4 mx-6 my-6 p-8 border border-gray-300 bg-white rounded shadow max-h-2xl text-center" id="productosContainer">
-        <% if (products.length > 0) { %>
-          <% for (const product of products) { %>
-            <%- include('templates/cardProduct', { product: product }); %>
-          <% } %>
-        <% } else { %>
-          <p class="text-gray-900 text-center font-bold">No hay productos, presione <span class="px-4 py-2 border text-semibold m-2 rounded bg-white">crear producto</span></p>
-        <% } %>
+                        <input type="" name="" class="border rounded px-2 bg-neutral-50 w-full outline-red-200 shadow-inner" placeholder="Buscar productos">
 
-        
-      </div>
-    </section>
+                    </div>
+                </div> -->
+                <div class="border w-full border-neutral-300 rounded-lg shadow bg-white flex flex-wrap flex-col gap-4 p-4">
+                    <div class="flex flex-row justify-between w-full">
+                        <button id="createProduct" class="border border-gray-300 bg-gray-100 px-4 p-2 rounded shadow w-1/5 sm:w-1/4 md:w-1/6">Crear Producto</button>
+                        <div class="flex-grow">
+                          <input type="text" name="search" class="border rounded px-2 p-2 bg-neutral-50 w-full outline-red-200 shadow-inner" placeholder="Buscar productos">
+                        </div>
+                    </div>
 
-    <div id="backgroundModal" class="fixed inset-0 bg-neutral-800 bg-opacity-75 bg-backdrop backdrop-filter backdrop-blur-sm transition-opacity transition-all hidden">
+                    <div class="sm:flex sm:flex-row sm:flex-wrap md:grid md:grid-cols-2 md:grid-auto-flow-row md:gap-4 md:grid-cols-4 lg:grid-cols-6" id="containerProducts">
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <main class="w-full px-5 py-10 bg-neutral-100 flex flex-col items-centersection hidden" id="section-categories" name="categories">
+            <h2 class="text-3xl font-light text-center">Categorias</h2>
+            <div class="min-w-full">
+                <button class="border border-neutral-300 bg-neutral-100 px-4 py-2 rounded shadow ">Crear Categoria</button>
+            </div>
+            <div class="align-middle mt-3  inline-block min-w-full shadow overflow-hidden sm:rounded-lg border border-gray-300">
+                <table class="min-w-full">
+                    <thead class="bg-neutral-100 ">
+                        <tr>
+                            <th class="px-6 py-3 text-semibold text-center text-md leading-4 text-gray-600 uppercase tracking-wider">
+                                  Nombre de categoria
+                            </th>
+                            <th class="px-6 py-3 text-semibold text-center text-md leading-4 text-gray-600 uppercase tracking-wider">
+                                  Disponibilidad
+                            </th>
+                            <th class="px-6 py-3 text-semibold text-center text-md leading-4 text-gray-600 uppercase tracking-wider">
+                                  Acciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="category-list" class="bg-white">
+
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para agregar, editar y ver productos -->
+
+    <div id="backgroundModal" class="fixed inset-0 bg-neutral-800 bg-opacity-75 bg-backdrop backdrop-filter backdrop-blur-sm transition-opacity transition-all hidden " data-mode="create">
 
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
             
             <div class="flex justify-center items-center">
-
-                <div id="modalBase" class="relative transform overflow-hidden rounded bg-white text-left shadow transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                <div id="modalBase" class="relative transform overflow-hidden rounded bg-white text-left shadow transition-all sm:my-4 sm:w-full sm:max-w-lg border">
                     
                     <div class="bg-white px-4 pb-4 pt-5 shadow flex flex-col">
                         <section class="flex flex-col p-4">
@@ -113,13 +112,17 @@
                         <form id="formProduct" class="p-4">
 
                             <label class="text-left text-lg text-gray-700 mt-2">Nombre del producto</label>
-                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="name" placeholder="Por ejemplo: Pesa 20kg">
+                            <p name="name"></p>
+                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4 hidden" type="text" name="name" placeholder="Por ejemplo: Pesa 20kg">
+
 
                             <label class="text-left text-lg text-gray-700 mt-4">Precio de venta</label>
-                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="price" placeholder="Ejemplo: $20">
+                            <p name="price"></p>
+                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4 hidden" type="text" name="price" placeholder="Ejemplo: $20">
 
                             <label class="text-left text-lg text-gray-700 mt-4">Código Identificador</label>
-                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" type="text" name="code" placeholder="Ingrese el código del producto">
+                            <p name="code"></p>
+                            <input class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4 hidden" type="text" name="code" placeholder="Ingrese el código del producto">
 
                             <label class="text-left text-lg text-gray-700 mt-4 ">Categoria</label>
                             <select id="selectCategories" name="categoryId" class="border border-gray-300 rounded shadow bg-gray-100 p-3 w-full mb-4 text-gray-500">
@@ -127,28 +130,35 @@
                             </select>
 
                             <label class="text-left text-lg text-gray-700 mt-4">Descripción</label>
-                            <textarea class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4" name="description" placeholder="Ingrese una Descripción del producto"></textarea>
+                            <textarea class="border border-gray-300 rounded shadow-inner bg-gray-100 p-2 w-full mb-4 focus:outline-none focus:ring-4 hidden" name="description" placeholder="Ingrese una Descripción del producto"></textarea>
 
                             <input id="files" type="file" name="files" class="hidden" multiple="">
 
                             <section class="flex justify-center">
-                                <button id="btnCloseModalProduct" class="border border-gray-400 bg-gray-200 px-4 py-2 rounded shadow mx-2 hover:bg-gray-400 hover:border-gray-600 hover:transition-all hover:text-white">Cerrar</button>
+                                <button id="btnCloseModal" class="btn btn-secundary">Cerrar</button>
 
-                                <button id="btnSaveProduct" class="border border-emerald-600 bg-emerald-500 px-4 py-2 text-white rounded shadow hover:bg-emerald-700 hover:border-emerald-800 mx-2 hover:transition-all">Gurdar</button>
+                                <button id="btnSaveInformation" class="btn btn-save">Gurdar</button>
                             </section>
                         </form>
-                      
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-  
-  <script src="js/jquery.js"></script>
-  <script src="js/toastr.min.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/home.js"></script>
+    <!-- Spinner de carga -->
+    <div id="spinner" class="fixed inset-0 bg-neutral-800 bg-opacity-75 bg-backdrop backdrop-filter backdrop-blur-sm transition-opacity transition-all hidden">
+        <div class="flex flex-col items-center justify-center fixed inset-0 z-10 w-screen overflow-y-auto">
+            <span class="text-white text-3xl">Cargando...</span>
+            <img src="/img/spinner.svg">
+        </div>
+    </div>
+
+    <!-- Scrips -->
+    <script src="/js/sweetalert.js"></script>
+    <script src="/js/popper-2.11.8.min.js"></script>
+    <script src="/js/tippy-6.3.7-min.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/productsSection.js"></script>
+
 </body>
-</html>

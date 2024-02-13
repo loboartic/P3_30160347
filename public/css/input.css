@@ -12,3 +12,41 @@
 body {
   font-family: 'Montserrat', sans-serif;
 }
+
+/*Tema personalizado para el sistema de ventas*/
+@layer base {
+  .btn {
+    @apply border shadow-md rounded px-4 py-2 text-center m-2 transition duration-300;
+  }
+
+  /*Botón de guardado */
+  .btn-save {
+    @apply bg-emerald-500 border-emerald-600 text-white;
+  }
+
+  .btn-save:hover {
+    @apply bg-emerald-600 border-emerald-600
+  }
+
+  /*Botón de advetencia */
+  .btn-warning {
+    @apply bg-orange-500 border-orange-600 text-white
+  }
+
+  .btn-warning:hover {
+    @apply bg-orange-600 border-orange-600
+  }
+
+  .btn-secundary {
+    @apply border-gray-400 bg-gray-200 text-black
+  }
+
+  .btn-secundary:hover {
+    @apply bg-gray-400 border-gray-600
+  }
+
+  .input-text {
+    @apply border border-neutral-400 p-2 focus:ring-2 focus:ring-sky-500 rounded shadow-inner bg-neutral-200 w-full
+  }
+}
+

@@ -10,7 +10,51 @@ const productOptions = document.querySelectorAll('#productOptions');
 const btnFiles = document.querySelector('#btnFiles');
 const imagesPreview = document.querySelector('#imagesPreview');
 const images = document.querySelectorAll('.img-draggable');
+const confi = document.querySelectorAll('.configurator');
 
+/*tippy('[data-tippy-content]', {
+    theme: 'light',
+    animation: 'scale',
+});*/
+
+tippy(confi, {
+    content: `
+    <div class="flex flex-row">
+        <button class="btn btn-secundary" id="viewProduct">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+        </button>
+        <button class="btn btn-secundary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+            </svg>
+        </button>
+        <button class="btn btn-secundary">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+            </svg>
+</button>
+    <div>
+    `,
+    interactive: true,
+    allowHTML: true,
+    theme: 'light',
+    animation: 'scale',
+});
+// Configuración de SweetAlert
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 5000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+    },
+});
 
 // ================= EVENTOS =================
 btnOpenModalProduct.addEventListener('click', (event) => {
@@ -19,7 +63,6 @@ btnOpenModalProduct.addEventListener('click', (event) => {
     const backgroundModal = document.querySelector('#backgroundModal');
 
     backgroundModal.classList.remove('hidden');
-    console.log('Ha aparecido el modal');
     // Llamada inicial para cargar las categorías
     loadCategories();
 });
@@ -29,7 +72,6 @@ btnCloseModalProduct.addEventListener('click', () => {
 
     const backgroundModal = document.querySelector('#backgroundModal');
     backgroundModal.classList.add('hidden');
-    console.log('Se ha cerrado el modal');
 });
 
 btnSaveProduct.addEventListener('click', async (event) => {
@@ -46,7 +88,10 @@ btnSaveProduct.addEventListener('click', async (event) => {
 
         // Verifica que exista un campo con un valor vacío
         if (Array.from(formData.values()).includes('')) {
-            return toastr.warning('El campo tiene un valor vacío');
+            return Toast.fire({
+                icon: 'warning',
+                title: 'Hay campos vácios',
+            });
         }
 
         // Envio de infomación para añadir un producto
@@ -61,12 +106,24 @@ btnSaveProduct.addEventListener('click', async (event) => {
         if (data.error === true) {
             return toastr.error(data.msg);
         } else {
+            // Creamos la tarjeta
             const card = await createProductCard(data.data);
             document.querySelector('#productosContainer').appendChild(card);
-            return toastr.success(data.msg);
+            // Cerramos el modal
+            const backgroundModal = document.querySelector('#backgroundModal');
+            backgroundModal.classList.add('hidden');
+
+            // Mostrar al usuario lo que se hizo
+            return Toast.fire({
+                icon: 'success',
+                title: `El producto ${data.data.name} ha sido creado con exito`,
+            });
         }
     } catch (error) {
-        return toastr.error('Ocurrio un error al enviar los datos');
+        return Toast.fire({
+            icon: 'error',
+            title: `Ocurrio un error creando el producto`,
+        });
     }
 });
 
@@ -77,9 +134,6 @@ selectCategories.addEventListener('change', async (event) => {
     event.preventDefault();
 
     const selectedCategoryId = event.target.value;
-
-    // Cada ves que la categoria cambie
-    loadCategories();
 });
 
 btnFiles.addEventListener('click', () => {
@@ -126,11 +180,10 @@ function createFileList(files, nodo) {
 }
 
 function createOptions(data, nodo) {
-    console.log('Limpiando Nodos...');
     while (nodo.firstChild) {
         nodo.removeChild(nodo.firstChild);
     }
-    console.log('Nodos Limpiados');
+
     for (value of data) {
         const option = document.createElement('OPTION');
         option.value = value.id;
@@ -187,7 +240,6 @@ function createProductCard(productData) {
     priceStock.appendChild(priceParagraph);
 
     // Puedes agregar el elemento de stock si es necesario
-
     container.appendChild(priceStock);
 
     // Crear botón con tooltip
@@ -251,7 +303,6 @@ function createTooltipButton(id, text) {
 }
 
 function handleDrag(event) {
-    console.log('Un elemento se mueve');
     event.dataTransfer.setData(
         'text/plain',
         event.currentTarget.getAttribute('data-name'),
@@ -262,13 +313,10 @@ function handleDrag(event) {
 
 function handleDragOver(event) {
     event.preventDefault();
-    console.log('Un elemento encima');
 }
 
 function handleDrop(event) {
     event.preventDefault();
-    console.log('Un elemento cayo');
-    console.log(event.dataTransfer.getData('text'));
     const ide = event.dataTransfer.getData('text');
     const draggableElement = document.querySelector(`img[data-name=${ide}]`);
     const dropZone = event.target;
@@ -289,8 +337,10 @@ dropArea.addEventListener('drop', async (event) => {
     const result = await validateFileSize(validateFIles, 1000000);
 
     if (!result) {
-        toastr.warning('Un archivo supera el tamaño permitido', 'ADVERTENCIA');
-        return;
+        return Toast.fire({
+            icon: 'error',
+            title: 'El archivo supera el tamaño permitido',
+        });
     }
 
     // Toma del selector
@@ -337,8 +387,6 @@ async function handlerDeleteProduct(event) {
     // Procesamos la respuesta
     let resultado = await process.json();
 
-    console.log(resultado);
-
     // Verifica que no haya error
     if (!resultado.error) {
         console.log('El producto se elimino correctamente');
@@ -346,11 +394,15 @@ async function handlerDeleteProduct(event) {
         // Eliminar del DOM el elemento
         event.target.parentElement.parentElement.parentElement.remove();
 
-        toastr.success('El producto se ha eliminado correctamente');
-        return;
+        return Toast.fire({
+            icon: 'success',
+            title: `El producto ha sido eliminado exitosamente`,
+        });
     } else {
-        toastr.error(resultado.msg);
-        return;
+        return Toast.fire({
+            icon: 'error',
+            title: `${resultado.msg}`,
+        });
     }
 }
 
@@ -361,8 +413,6 @@ async function handlerViewProduct(event) {
         event.target.parentElement.parentElement.parentElement.getAttribute(
             'data-id',
         );
-
-    console.log(productToView);
 
     window.location.href = `/product/${productToView}`;
 }
@@ -382,7 +432,6 @@ async function loadCategories() {
         },
     });
     const data = await sendValues.json();
-    console.log(data);
 
     let nodo = document.querySelector('#selectCategories');
     await createOptions(data.data, nodo);

@@ -43,7 +43,6 @@ const addProduct = async (req, res) => {
 
         // Verificamos la información del producto
         if (product) {
-
             // Hacemos una busqueda del producto por su id
             let productData = await db.product.findOne({
                 where: {
@@ -121,8 +120,15 @@ const viewProduct = async (req, res) => {
     });
 };
 
+const allProducts = async (req, res) => {
+    const productList = await GetAllProducts();
+
+    return res.json(productList);
+};
+
 module.exports = {
     addProduct,
     deleteProduct,
     viewProduct,
+    allProducts,
 };

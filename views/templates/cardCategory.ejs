@@ -1,4 +1,8 @@
-<div class="border bg-white-100 rounded p-4">
-    <label>Nombre:</label>
-    <p> <%= category.name %> </p>
-</div>
+<tr class="border-t">
+  <td title="<%= category.name %>"><%= category.name %></td>
+  <td></td>
+  <td class="flex justify-center items-center gap-4 text-white">
+    <button class="btn btn-warning">Eliminar</button>
+    <button class="btn btn-save">Editar</button>
+  </td>
+</tr>
