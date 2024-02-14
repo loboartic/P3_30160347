@@ -104,21 +104,25 @@ const deleteProduct = async (req, res) => {
 const viewProduct = async (req, res) => {
     const { id } = req.params;
     // Obtener todos los registros de la base de datos
-    let product = await db.product.findOne({
+    let productData = await db.product.findOne({
         where: {
             id,
         },
         include: [db.image, db.category],
     });
 
-    const productJson = product.toJSON();
-    console.log('-----MOSTRANDO EL PRODUCTO ------');
-    console.log(productJson);
+    const product = productData.toJSON();
 
-    res.render('viewProduct', {
-        product: productJson,
-    });
+    return res.json(product)
 };
+
+const editProduct = async (req, res) => {
+    // Recibir el identificador del producto
+    // Realizar las operaciones de guardado
+    // 
+    // Edición de productos
+    return res.json();
+}
 
 const allProducts = async (req, res) => {
     const productList = await GetAllProducts();

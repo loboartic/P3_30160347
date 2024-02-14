@@ -1,6 +1,7 @@
 // ============ SELECTORES ============
 const sections = document.querySelectorAll('#btnSection');
 const createProduct = document.querySelector('#createProduct');
+const createCategory = document.querySelector('#btnCreateCategory');
 const closeModal = document.querySelector('#btnCloseModal');
 const btnSaveInformation = document.querySelector('#btnSaveInformation');
 
@@ -29,10 +30,20 @@ sections.forEach((section) => {
 createProduct.addEventListener('click', (event) => {
     event.preventDefault();
 
-    handlerModal(
+    /*handlerModal(
         document.querySelector('#backgroundModal'),
         'create',
         'open',
+        'product',
+    );*/
+    modal = document.querySelector('#backgroundModal');
+    modal.setAttribute('data-modal-origin', 'product');
+    loadCategories();
+    handlerModalNew(
+        document.querySelector('#backgroundModal'),
+        'CREATE',
+        'open',
+        '',
         'product',
     );
 });
@@ -42,7 +53,30 @@ btnSaveInformation.addEventListener('click', handleSubmit);
 closeModal.addEventListener('click', (event) => {
     event.preventDefault();
 
-    handlerModal(document.querySelector('#backgroundModal'), 'read', 'close');
+    /*   handlerModal(document.querySelector('#backgroundModal'), 'read', 'close');
+     */
+    modal = document.querySelector('#backgroundModal');
+    console.log(modal.getAttribute('data-modal-origin'));
+    handlerModalNew(
+        modal,
+        '',
+        'close',
+        '',
+        modal.getAttribute('data-modal-origin'),
+    );
+});
+
+createCategory.addEventListener('click', (event) => {
+    event.preventDefault();
+    modal = document.querySelector('#backgroundModal');
+    modal.setAttribute('data-modal-origin', 'category');
+    handlerModalNew(
+        document.querySelector('#backgroundModal'),
+        'CREATE',
+        'open',
+        '',
+        'category',
+    );
 });
 
 // ============ FUNCIONES ============
@@ -114,10 +148,10 @@ function createCategoryRow(category) {
 
     btnDelete.classList.add('btn', 'btn-warning', 'disabled:opacity-75');
     btnDelete.textContent = 'Eliminar';
-    btnDelete.disabled = true
+    btnDelete.disabled = true;
     btnSave.classList.add('btn', 'btn-save', 'disabled:opacity-75');
     btnSave.textContent = 'Editar';
-    btnSave.disabled = true
+    btnSave.disabled = true;
 
     tdName.textContent = category.name;
     tdVoid.textContent = '';
@@ -131,57 +165,41 @@ function createCategoryRow(category) {
     return tr;
 }
 
-function handlerModal(
-    nodo = undefined,
-    mode = '',
-    method = '',
-    activated = '',
-    data = {},
-) {
-    /**
-     * Función que maneja los cambios de estado del modal
-     * nodo -> nodo donde se modificará la información (nodo es el modal padre)
-     * modo -> El modo con que se aperturará el modal (crate, edit y '') vacio para ocultar los campos
-     * method -> Los metodos de apertura y cierre del modal (open y close)
-     * activated -> String del bóton que lo activa, mas bien un identificador especifico
-     * data -> Un objeto donde se colorá respectivamente en los campos
-     * */
+const MODES = {
+    CREATE: {
+        showInputs: true,
+        showTextarea: true,
+    },
+    EDIT: {
+        showInputs: true,
+        showTextarea: true,
+    },
+    CLOSE: {
+        showInputs: false,
+        showTextarea: false,
+    },
+};
 
-    // Menejador de apertura y cierre del modal
+function handlerModalNew(nodo, mode, method, activated, origin) {
+    const config = MODES.mode;
+    const inputs = nodo.querySelectorAll(`[data-origin="${origin}"]`);
+    const form = nodo.querySelector('form');
+
     if (method === 'open') {
-        nodo.classList.remove('hidden');
+        showModal(nodo, inputs);
+    } else if (method === 'close') {
+        hideModal(nodo, inputs);
     }
+}
 
-    if (method === 'close') {
-        nodo.classList.add('hidden');
-    }
+function showModal(nodo, inputs) {
+    nodo.classList.remove('hidden');
+    inputs.forEach((input) => input.classList.remove('hidden'));
+}
 
-    nodo.setAttribute('data-mode', mode);
-
-    if (mode === 'create') {
-        const inputs = nodo.querySelectorAll('input');
-
-        inputs.forEach((input) => {
-            input.type != 'file' ? input.classList.remove('hidden') : undefined;
-        });
-        nodo.querySelector('textarea[name]').classList.remove('hidden');
-        nodo.setAttribute('data-activated', activated);
-        if (activated === 'product') {
-            loadCategories();
-        }
-    } else if (mode === 'edit') {
-    } else {
-        // Selectores de input y parafos
-        const inputs = nodo.querySelectorAll('input');
-        const ps = nodo.querySelectorAll('p[name]');
-
-        // Agregar clases para ocultar los campos
-        ps.forEach((p) => p.classList.add('hidden'));
-        inputs.forEach((input) => input.classList.add('hidden'));
-
-        // TextArea
-        nodo.querySelector('textarea[name]').classList.add('hidden');
-    }
+function hideModal(nodo, inputs) {
+    nodo.classList.add('hidden');
+    inputs.forEach((input) => input.classList.add('hidden'));
 }
 
 function changeSection(sectionName) {
@@ -203,7 +221,7 @@ function changeSection(sectionName) {
     // Ocultar spinner después de un tiempo
     setTimeout(() => spinner.classList.add('hidden'), 3000);
 
-    console.log(sectionName)
+    console.log(sectionName);
     // Si la sección seleccionada es "products", cargar los productos
     if (sectionName === 'products') {
         loadProducts();
@@ -215,7 +233,7 @@ function changeSection(sectionName) {
 }
 
 async function loadCategoriesSection() {
-    console.log('En categorias')
+    console.log('En categorias');
     const containerProducts = document.querySelector('#category-list');
 
     // Limpiar el contenedor de productos
@@ -232,7 +250,7 @@ async function loadCategoriesSection() {
     });
     const categoriesList = await sendValues.json();
 
-    console.log(categoriesList)
+    console.log(categoriesList);
 
     // Agregar spiner de carga
     showLoadSpinner(true);
@@ -328,11 +346,22 @@ async function handleSubmitProduct(event) {
     try {
         // Formulario
         const form = document.querySelector('#formProduct');
+        const formData = new FormData();
 
-        // Obtención de los datos del formulario de productos
-        const formData = new FormData(form);
+        // Seleccionar campos con el data-origin especificado
+        const fieldsNodes = form.querySelectorAll('[data-origin="product"]');
 
-        console.log(Object.fromEntries(formData));
+        const fields = Array.from(fieldsNodes);
+        // Filtrar campos vacíos
+        // const filteredFields = fields.filter(field => field.value !== '');
+
+        // Agregar campos al FormData
+        for (const field of fields) {
+            if (field.name !== undefined) {
+                console.log(field.name);
+                formData.append(field.name, field.value);
+            }
+        }
 
         // Verifica que exista un campo con un valor vacío
         if (Array.from(formData.values()).includes('')) {
@@ -361,6 +390,8 @@ async function handleSubmitProduct(event) {
             const backgroundModal = document.querySelector('#backgroundModal');
             backgroundModal.classList.add('hidden');
 
+            hideModal(backgroundModal, fieldsNodes);
+
             // Mostrar al usuario lo que se hizo
             return Toast.fire({
                 icon: 'success',
@@ -368,6 +399,7 @@ async function handleSubmitProduct(event) {
             });
         }
     } catch (error) {
+        console.log(error);
         return Toast.fire({
             icon: 'error',
             title: `Ocurrio un error creando el producto`,
@@ -375,16 +407,74 @@ async function handleSubmitProduct(event) {
     }
 }
 
+async function handleSubmitCategory(event) {
+    try {
+        // Formulario
+        const form = document.querySelector('#formProduct');
+        const formData = new FormData();
+
+        // Seleccionar campos con el data-origin especificado
+        const fieldsNodes = form.querySelectorAll('[data-origin="category"]');
+
+        const fields = Array.from(fieldsNodes);
+
+        // Agregar campos al FormData
+        for (const field of fields) {
+            if (field.name !== undefined) {
+                console.log(field.name);
+                formData.append(field.name, field.value);
+            }
+        }
+
+        // Verifica que exista un campo con un valor vacío
+        if (Array.from(formData.values()).includes('')) {
+            return Toast.fire({
+                icon: 'warning',
+                title: 'Hay campos vácios',
+            });
+        }
+
+        console.log(formData)
+        const sendValues = await fetch('/category/add', {
+            method: 'POST',
+            body: formData,
+        });
+
+        const data = await sendValues.json();
+        console.log(data)
+
+        if (data.error === true) {
+            return Toast.fire({
+                icon: 'error',
+                title: `Ocurrio un error creando la categoria`,
+            });
+        } else {
+            //createCategoryRow(data);
+            return Toast.fire({
+                icon: 'success',
+                title: `La categoria ha sido creada con exito`,
+            });
+        }
+    } catch (error) {
+        return Toast.fire({
+            icon: 'error',
+            title: `Ocurrio un error creando la categoria`,
+        });
+    }
+}
 function handleSubmit(event) {
     event.preventDefault();
 
-    const whoActivated =
-        event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute(
-            'data-activated',
-        );
+    const modal = document
+        .querySelector('#backgroundModal')
+        .getAttribute('data-modal-origin');
 
-    if (whoActivated === 'product') {
+    console.log(modal);
+    if (modal === 'product') {
         handleSubmitProduct(event);
+    }
+    if (modal === 'category') {
+        handleSubmitCategory(event);
     }
 }
 
